@@ -1,0 +1,3 @@
+blurring concept
+1. Low pass filter -> removal of noise, blurring the image
+2. High pass filter -> finding edges in image
