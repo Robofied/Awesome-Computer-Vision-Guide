@@ -31,6 +31,16 @@ Licensed under the [MIT License](LICENSE)
 | <a href="https://twitter.com/Robofied"><img src="https://i.ibb.co/kmgQVyW/twitter.png" width="32px" height="32px"></a> <a href="https://github.com/Robofied"><img src="https://cdn.iconscout.com/icon/free/png-256/github-108-438008.png" width="32px" height="32px"></a> <a href="https://www.facebook.com/Robofied"><img src="https://i.ibb.co/zmYNW4p/facebook.png" width="32px" height="32px"></a> <a href="https://www.linkedin.com/company/robofied/"><img src="https://i.ibb.co/Kx2GSrT/linkedin.png" width="32px" height="32px"></a> |
 
 <hr/>
+<h2>Topics covered</h2>
+1. Image
+2. Video
+3. Matplotlib
+4. Drawing Shapes
+5. Masking
+6. Trackbar
+7. Blurring and Smoothing
+
+<hr/>
 
 <p align="center">
 
