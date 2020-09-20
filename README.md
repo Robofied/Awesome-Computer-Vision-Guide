@@ -63,7 +63,4 @@ You can run and edit the algorithms or contribute to them using [Gitpod.io](http
 Licensed under the [MIT License](LICENSE)
 
 ## Contributor
-
-<p align="center">
-**[Robofied](https://www.robofied.com/)**                                                                                                                                                                                                                                                 |
-|<a href="https://twitter.com/Robofied"><img src="https://i.ibb.co/kmgQVyW/twitter.png" width="32px" height="32px"></a> <a href="https://github.com/Robofied"><img src="https://cdn.iconscout.com/icon/free/png-256/github-108-438008.png" width="32px" height="32px"></a> <a href="https://www.facebook.com/Robofied"><img src="https://i.ibb.co/zmYNW4p/facebook.png" width="32px" height="32px"></a> <a href="https://www.linkedin.com/company/robofied/"><img src="https://i.ibb.co/Kx2GSrT/linkedin.png" width="32px" height="32px"></a> |
+[Hritik Jaiswal](https://hritik5102.github.io) | Ridhima Garg | Akshat Gupta
