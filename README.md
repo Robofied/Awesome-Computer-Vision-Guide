@@ -63,4 +63,4 @@ You can run and edit the algorithms or contribute to them using [Gitpod.io](http
 Licensed under the [MIT License](LICENSE)
 
 ## Contributor
-[Hritik Jaiswal](https://hritik5102.github.io) | Ridhima Garg | Akshat Gupta
+[Hritik Jaiswal](https://hritik5102.github.io) | [Ridhima Garg](https://ridhimagarg.github.io/) | [Akshat Gupta](https://akshat4112.github.io/)
