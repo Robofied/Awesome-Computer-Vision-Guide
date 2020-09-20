@@ -18,7 +18,6 @@ You can run and edit the algorithms or contribute to them using [Gitpod.io](http
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](http://gitpod.io/#https://github.com/Robofied/Awesome-Computer-Vision-Guide)
 
 ## Topics covered
-<hr/>
 <ol>
     <li>Image
     <li>Video
