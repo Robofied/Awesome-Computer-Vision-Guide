@@ -73,19 +73,6 @@ Licensed under the [MIT License](LICENSE)
 
 <hr/>
 
-<p align="center">
-
-```bash
- _____ _                 _     __   __
-|_   _| |               | |    \ \ / /
-  | | | |__   __ _ _ __ | | __  \ V /___  _   _
-  | | | '_ \ / _` | '_ \| |/ /   \ // _ \| | | |
-  | | | | | | (_| | | | |   <    | | (_) | |_| |
-  \_/ |_| |_|\__,_|_| |_|_|\_\   \_/\___/ \__,_|
-```
-
-</p>
-
 <!-- |     Avatar                                                      |                        Email                |
 | --------------------                                            |  -------------------------------------     |
 |  [<img src="https://avatars.githubusercontent.com/soofiyan" width="75px;"/><br /><sub><b>Soofiyan atar</b></sub>](https://github.com/soofiyan)       |  [![](https://img.shields.io/twitter/url?label=Github&logo=Github&style=social&url=https%3A%2F%2Fgithub.com%2Fhritik5102)](https://github.com/hritik5102) &nbsp;&nbsp; [![](https://img.shields.io/twitter/url?label=Linkedin&logo=Linkedin&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fhritik-jaiswal-22a136166%2F)](https://www.linkedin.com/in/hritik-jaiswal-22a136166/) &nbsp;&nbsp; [![](https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2FHritikJ71241501)](https://twitter.com/HritikJ71241501)                     |
