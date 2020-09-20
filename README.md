@@ -32,9 +32,9 @@ Licensed under the [MIT License](LICENSE)
 
 <hr/>
 <h2>Topics covered</h2>
-1. Image
-2. Video
-3. Matplotlib
+*1. Image
+*2. Video
+*3. Matplotlib
 4. Drawing Shapes
 5. Masking
 6. Trackbar
