@@ -19,7 +19,7 @@ You can run and edit the algorithms or contribute to them using [Gitpod.io](http
 
 ## Topics covered
 <ol>
-    <li>[Image](https://github.com/Robofied/Awesome-Computer-Vision-Guide/tree/master/src/01%20-%20Image)
+    <li><a href="https://github.com/Robofied/Awesome-Computer-Vision-Guide/tree/master/src/01%20-%20Image">Image</a>
     <li>Video
     <li>Matplotlib
     <li>Drawing Shapes
