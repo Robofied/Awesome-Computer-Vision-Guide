@@ -17,6 +17,48 @@ You can run and edit the algorithms or contribute to them using [Gitpod.io](http
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](http://gitpod.io/#https://github.com/Robofied/Awesome-Computer-Vision-Guide)
 
+## Topics covered
+<hr/>
+<ol>
+    <li>Image
+    <li>Video
+    <li>Matplotlib
+    <li>Drawing Shapes
+    <li>Masking
+    <li>Trackbar
+    <li>Blurring and Smoothing
+    <li>Morphological_Transformation
+    <li>Thresholding
+    <li>Adaptive Thresholding
+    <li>Otsu Thresholding        
+    <li>Transformation
+    <li>Callbacks
+    <li>Canny Edge Detection
+    <li>Sobel Laplacian Operation
+    <li>Gradient
+    <li>Histogram
+    <li>Hough Line
+    <li>Fourier Transformation
+    <li>Contour
+    <li>3D Map
+    <li>Background Filter
+    <li>Corner Detection
+    <li>Gamma Correction
+    <li>Stereo Blend 2 Camera
+    <li>Template Matching
+    <li>Haar Cascase
+    <li>Color Tracking
+    <li>Mouse Movement
+    <li>Color Detection
+    <li>Jack in the Box
+    <li>Lane Detection
+    <li>Pillow Library
+    <li>Digital Negative and Gray Level Slicing
+    <li>Intensity Transformation
+    <li>Histogram Equalization
+    <li>Catroon Effect
+</ol>
+
 ## License
 
 Licensed under the [MIT License](LICENSE)
@@ -30,17 +72,6 @@ Licensed under the [MIT License](LICENSE)
 |                                                                                                                                                                                                                                                **[Robofied](https://hritik5102.github.io/)**                                                                                                                                                                                                                                                 |
 | <a href="https://twitter.com/Robofied"><img src="https://i.ibb.co/kmgQVyW/twitter.png" width="32px" height="32px"></a> <a href="https://github.com/Robofied"><img src="https://cdn.iconscout.com/icon/free/png-256/github-108-438008.png" width="32px" height="32px"></a> <a href="https://www.facebook.com/Robofied"><img src="https://i.ibb.co/zmYNW4p/facebook.png" width="32px" height="32px"></a> <a href="https://www.linkedin.com/company/robofied/"><img src="https://i.ibb.co/Kx2GSrT/linkedin.png" width="32px" height="32px"></a> |
 
-<hr/>
-<h2>Topics covered</h2>
-<ol>
-    <li>Image
-    <li>Video
-    <li>Matplotlib
-    <li>Drawing Shapes
-    <li>Masking
-    <li>Trackbar
-    <li>Blurring and Smoothing
-</ol?
 <hr/>
 
 <p align="center">
