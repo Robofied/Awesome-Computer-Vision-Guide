@@ -32,14 +32,15 @@ Licensed under the [MIT License](LICENSE)
 
 <hr/>
 <h2>Topics covered</h2>
-*1. Image
-*2. Video
-*3. Matplotlib
-4. Drawing Shapes
-5. Masking
-6. Trackbar
-7. Blurring and Smoothing
-
+<ol>
+    <li>Image
+    <li>Video
+    <li>Matplotlib
+    <li>Drawing Shapes
+    <li>Masking
+    <li>Trackbar
+    <li>Blurring and Smoothing
+</ol?
 <hr/>
 
 <p align="center">
