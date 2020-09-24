@@ -62,5 +62,18 @@ You can run and edit the algorithms or contribute to them using [Gitpod.io](http
 
 Licensed under the [MIT License](LICENSE)
 
+## Contributing to Voicenet
+All contributions, bug reports, bug fixes, documentation improvements, enhancements and ideas are welcome.
+
+A detailed overview on how to contribute can be found in the contributing guide. There is also an overview on GitHub.
+
+If you are simply looking to start working with the voicenet codebase, navigate to the GitHub "issues" tab and start looking through interesting issues. There are a number of issues listed under Docs and good first issue where you could start out.
+
+You can also triage issues which may include reproducing bug reports, or asking for vital information such as version numbers or reproduction instructions.
+
+Or maybe through using you have an idea of your own or are looking for something in the documentation and thinking ‘this can be improved’. You can do something about it!
+
+Feel free to ask questions on the mailing list or on Slack.
+
 ## Contributor
 [Hritik Jaiswal](https://hritik5102.github.io) | [Ridhima Garg](https://ridhimagarg.github.io/) | [Akshat Gupta](https://akshat4112.github.io/)
