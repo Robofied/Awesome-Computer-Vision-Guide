@@ -62,7 +62,7 @@ You can run and edit the algorithms or contribute to them using [Gitpod.io](http
 
 Licensed under the [MIT License](LICENSE)
 
-## Contributing to Voicenet
+## Contributing to Awesome Computer Vision Guide
 All contributions, bug reports, bug fixes, documentation improvements, enhancements and ideas are welcome.
 
 A detailed overview on how to contribute can be found in the contributing guide. There is also an overview on GitHub.
