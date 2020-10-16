@@ -45,7 +45,7 @@ where `this-is-you` is your GitHub username. Here you're copying the contents of
 Change to the repository directory on your computer (if you are not already there):
 
 ```
-cd Fika
+cd Awesome-Computer-Vision-Guide
 ```
 
 Now create a branch using the `git checkout` command:
