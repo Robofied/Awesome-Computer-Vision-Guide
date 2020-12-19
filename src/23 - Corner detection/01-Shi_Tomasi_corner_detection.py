@@ -1,5 +1,10 @@
 import cv2
 import numpy as np
+
+'''
+Implementation of Shi-Tomasi corner detection and Good feature to track on Video
+'''
+
 cap = cv2.VideoCapture(0)
 def nothing(x):
     pass
