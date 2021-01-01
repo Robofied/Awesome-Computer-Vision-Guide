@@ -1,49 +1,35 @@
-'''
-Output : Different type of thresolding forms
-'''
-
 import cv2
-import numpy as np
+import matplotlib.pyplot as plt
 
-# for image ( we can also do with image )
-# img = cv2.imread('dog.png')
 
-cap = cv2.VideoCapture(0)
+img = cv2.imread('../Images and videos/image8.jpg')
 
-while True:
-    _, frame = cap.read()
-    grayscale = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
-    retval , boo = cv2.threshold(grayscale,200,255,cv2.THRESH_BINARY_INV)
-    retval , boo1 = cv2.threshold(grayscale,200,255,cv2.THRESH_BINARY)
-    retval , boo2 = cv2.threshold(grayscale,200,255,cv2.THRESH_TRUNC)
-    retval , boo3 = cv2.threshold(grayscale,200,255,cv2.THRESH_TOZERO)
-    retval , boo4 = cv2.threshold(grayscale,200,255,cv2.THRESH_TOZERO_INV)
+## Let's try converting it to grayscale
+## If you want you can try without converting to grayscale
+img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    cv2.imshow('boo',boo)
-    cv2.imshow('boo1',boo1)
-    cv2.imshow('boo2',boo2)
-    cv2.imshow('boo3',boo3)
-    cv2.imshow('boo4',boo4)
-    cv2.imshow('grayscale',grayscale)
 
-    k = cv2.waitKey(1) & 0xFF
-    if k ==27:
-        break
-    
-# we can also use this 
+ret1, thresh1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+ret2, thresh2 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
+ret3, thresh3 = cv2.threshold(img, 127, 255, cv2.THRESH_TRUNC)
+ret4, thresh4 = cv2.threshold(img, 127, 255, cv2.THRESH_TOZERO)
+ret5, thresh5 = cv2.threshold(img, 127, 255, cv2.THRESH_TOZERO_INV)
 
-#cv2.THRESH_BINARY_INV
-#cv2.THRESH_TRUNC
-#cv2.THRESH_TOZERO
-#cv2.THRESH_TOZERO_INV
+images = [thresh1, thresh2, thresh3, thresh4, thresh5]
+titles = ['Binary', 'Binary inverse', 'Truncate', 'Tozero', 'Tozero inverse']
 
-##cv2.imshow('frame',img)
+## Showing up using opencv
+for i in range(5):
+    cv2.imshow(titles[i], images[i])
+    cv2.waitKey(0)
+
+
+## Showing up using matplotlib
+for i in range(5):
+    plt.subplot(2,3,(i+1))
+    plt.imshow(images[i],'gray')
+    plt.xlabel(titles[i])
+
+plt.show()
+cv2.waitKey(0)
 cv2.destroyAllWindows()
-
-cap.release()
-
-   
-
-  
-
-
