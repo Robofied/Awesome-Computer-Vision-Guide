@@ -1,11 +1,10 @@
 '''
-Morphological operations are broad set of operations in 
-image processing
+Morphological operations are broad set of operations in image processing
 
-Erosion - erodes boundaries of foreground object.
+Erosion - erodes boundaries of foreground object. Decrease the white region and increasing black region, enlarge the whole. 
 Application - removing white noises and detach joint objects 
 
-Dilation - opposite of erosion, generally erosion followed by dilation
+Dilation - opposite of erosion, increasing while region and decresing black region , fill the whole
 Application- joining breaking parts
 
 Opening - errosion followed by dilation
@@ -20,10 +19,37 @@ import cv2
 import numpy as np 
 import matplotlib.pyplot as plt
 
-img = cv2.imread('./images/morph1.png')
+img = cv2.imread('../Images and videos/morph1.png')
 
 kernel = np.ones((5,5), np.uint8)
-## Performing opening operation to remove small objects from image
+
+# Erosion
+erosion = cv2.erode(img,kernel,iterations = 1)
+
+images = [img, erosion]
+titles = ['Original', 'Erosion']
+
+for i in range(2):
+    plt.subplot(1,2,(i+1))
+    plt.imshow(images[i],'gray')
+    plt.xlabel(titles[i])
+
+plt.show()
+
+# Dilation
+dilation = cv2.dilate(img,kernel,iterations = 1)
+
+images = [img, dilation]
+titles = ['Original', 'dilation']
+
+for i in range(2):
+    plt.subplot(1,2,(i+1))
+    plt.imshow(images[i],'gray')
+    plt.xlabel(titles[i])
+
+plt.show()
+
+# Opening (Erosion followed by dilation) : Performing opening operation to remove small objects from image
 remove_small_objects = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
 
 images = [img, remove_small_objects]
@@ -36,9 +62,7 @@ for i in range(2):
 
 plt.show()
 
-## Small hole removal using closing operation
-
-img = cv2.imread('./images/morph2.png')
+# Closing (Dilation followed by erosion) : Small hole removal using closing operation
 modify_objects = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
 
 images = [img, modify_objects]
