@@ -29,9 +29,9 @@ intermediate = np.zeros((height,width),dtype=float)
 '''
 TemplateN shape = (284 x 284)
 '''
-for x in range(width-1):
-    for y in range(width-1):
-        templateN[x+1][y+1] = cmath.exp(-1j*2*pi*x*y/width)
+for x in range(width):
+    for y in range(width):
+        templateN[x][y] = cmath.exp(-1j*2*pi*x*y/width)
 
 print(templateN.shape)
 
@@ -39,9 +39,9 @@ print(templateN.shape)
 '''
 TemplateM shape = (177 x 177)
 '''
-for x in range(height-1):
-    for y in range(height-1):
-        templateM[x+1][y+1] = cmath.exp(-1j*2*pi*x*y/height) 
+for x in range(height):
+    for y in range(height):
+        templateM[x][y] = cmath.exp(-1j*2*pi*x*y/height) 
 
 print(templateM.shape)
 
@@ -50,7 +50,7 @@ print(templateM.shape)
 Intermediate shape = (284 x 284) * (284*177) * (177,177) = resultant shape (284,177)
 '''
 # Intermediate state (apply tranformation on original image)
-intermediate = templateM.dot(img).dot(templateN) / width*height
+intermediate = templateM.dot(img).dot(templateN)
 
 #intermediate = np.array(intermediate,dtype=np.float32)
 print(intermediate.shape)
@@ -93,16 +93,16 @@ templateM = np.zeros((height,height),dtype=complex)
 templateN = np.zeros((width,width),dtype=complex)
 
 # Modification in formula 
-for x in range(width-1):
-    for y in range(width-1):
-        templateN[x+1][y+1] = cmath.exp(1j*2*pi*x*y/width)
+for x in range(width):
+    for y in range(width):
+        templateN[x][y] = cmath.exp(1j*2*pi*x*y/width)
 
-for x in range(height-1):
-    for y in range(height-1):
-        templateM[x+1][y+1] = cmath.exp(1j*2*pi*x*y/height) 
+for x in range(height):
+    for y in range(height):
+        templateM[x][y] = cmath.exp(1j*2*pi*x*y/height) 
 
 # Intermediate state (apply tranformation on Fourier transformed image)
-IFT = templateM.dot(intermediate).dot(templateN) 
+IFT = templateM.dot(intermediate).dot(templateN) / width*height
 #IFT = np.array(IFT,dtype=np.float32)
 Original_img = np.abs(IFT)
 
@@ -149,7 +149,6 @@ plt.subplot(133),plt.imshow(img_back)
 plt.title('Result in JET'), plt.xticks([]), plt.yticks([])
 
 plt.show()
-
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
