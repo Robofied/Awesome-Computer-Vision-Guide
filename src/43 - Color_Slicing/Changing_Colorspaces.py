@@ -10,7 +10,6 @@ he image is read in the BGR format.
 
 # BGR Image
 image = cv2.imread('../Images and Videos/mandrill_monkey.jpg')
-
 image_copy = image.copy()
 # Type and shape ( image.shape[0] => Height and image.shape[1] => Width)
 print("[INFO] Type of image : ", type(image)) 
@@ -18,6 +17,7 @@ print("[INFO] Original image => width : {} Height : {} channel : {}".format(imag
 cv2.imshow('Original image',image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
 
 # Grayscale without using inbuilt function (Reference : https://docs.opencv.org/master/de/d25/imgproc_color_conversions.html)
 '''
@@ -42,18 +42,20 @@ cv2.destroyAllWindows()
 '''
 
 # Intialize a new array of zeroes with the same shape
-gray = np.zeros((image.shape[0],image.shape[1]));
-gray2 = np.zeros((image.shape[0],image.shape[1]));
+gray = np.zeros((image.shape[0],image.shape[1]))
+gray2 = np.zeros((image.shape[0],image.shape[1]))
+print("Width : " , gray.shape[1], "Height : ",gray.shape[0])
+print("[INFO] | -------------- Display plot ----------- | ") 
 
 # Map averages of pixels to the grey image : Raw average
-for r in range(len(image)): 
-    for c in range(len(image[0])): 
+for r in range(gray.shape[0]): 
+    for c in range(gray.shape[1]): 
         # Use human average
         gray[r][c] = np.average(image_copy[r][c]);
 
 # Method 02 : 'Human' Average - adapted for human eyes
-for r in range(len(image)): 
-    for c in range(len(image[0])): 
+for r in range(gray2.shape[0]): 
+    for c in range(gray2.shape[1]): 
         # Use human average
         gray2[r][c] = 0.299*image_copy[r][c][0] + 0.587*image_copy[r][c][1] + 0.114*image_copy[r][c][2]
 
@@ -63,7 +65,8 @@ Each channel is represented as a ndarray with two dimensions,
 which means this can represented by grayscale images.
 '''
 
-print("[INFO] 1 Channel => Grayscale ",gray2.shape)
+print("[INFO] 1 Channel => Width : ", gray2.shape[1], "Height : ",gray2.shape[0])
+
 
 images = [gray, gray2]
 title  = ["Average - Method 1","LUMA-REC-601(non-linear) - Method 2"]
