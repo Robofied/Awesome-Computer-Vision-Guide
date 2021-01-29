@@ -79,4 +79,4 @@ Or maybe through using you have an idea of your own or are looking for something
 Feel free to ask questions on the mailing list or on Slack.
 
 ## Contributor
-[Hritik Jaiswal](https://hritik5102.github.io) | [Ridhima Garg](https://ridhimagarg.github.io/) | [Akshat Gupta](https://akshat4112.github.io/)
+[Hritik Jaiswal](https://hritik5102.github.io) 
