@@ -1,8 +1,4 @@
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Robofied/Awesome-Computer-Vision-Guide)
-
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Robofied/Awesome-Computer-Vision-Guide)
-
-## Computer Vision Tutorials &nbsp; ![](https://img.shields.io/github/forks/Robofied/Awesome-Computer-Vision-Guide?style=social) ![](https://img.shields.io/github/stars/Robofied/Awesome-Computer-Vision-Guide?style=social) ![](https://img.shields.io/github/watchers/Robofied/Awesome-Computer-Vision-Guide?style=social) <br>
+## Computer Vision Tutorials &nbsp; ![](https://img.shields.io/github/forks/Robofied/Awesome-Computer-Vision-Guide?style=social) ![](https://img.shields.io/github/stars/Robofied/Awesome-Computer-Vision-Guide?style=social) ![](https://img.shields.io/github/watchers/Robofied/Awesome-Computer-Vision-Guide?style=social) [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Robofied/Awesome-Computer-Vision-Guide) <br>
 
 ![](https://img.shields.io/github/repo-size/Robofied/Awesome-Computer-Vision-Guide) ![](https://img.shields.io/github/license/Robofied/Awesome-Computer-Vision-Guide?color=red)<br>
 ![](https://img.shields.io/github/issues/Robofied/Awesome-Computer-Vision-Guide?color=green) ![](https://img.shields.io/github/issues-pr/Robofied/Awesome-Computer-Vision-Guide?color=green) ![](https://img.shields.io/github/downloads/Robofied/Awesome-Computer-Vision-Guide/total) ![](https://img.shields.io/github/last-commit/Robofied/Awesome-Computer-Vision-Guide) ![](https://img.shields.io/github/contributors/Robofied/Awesome-Computer-Vision-Guide)
