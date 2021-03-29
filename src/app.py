@@ -14,6 +14,7 @@
 
 
 # Import package
+import base64
 import streamlit as st
 import pandas as pd
 from PIL import Image
@@ -179,6 +180,14 @@ Feel free to ask questions on the mailing list or on Slack.
     ''')
 
 
+def get_binary_file_downloader_html(bin_file, file_label='File'):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    bin_str = base64.b64encode(data).decode()
+    href = f'<a style="background-color:#00C4EB;border-radius:5px;box-shadow: 0 5px 0 rgb(0, 116, 191);color: #FFFFFF;padding: 1em 1.5em;position: relative;text-decoration: none;font-weight:bold;cursor: pointer;" href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">Download  {file_label}  📃</a>'
+    return href
+
+
 def image_01():
     html_temp = """
     <div>
@@ -228,9 +237,26 @@ def image_01():
 
       When reading a color image file, OpenCV ```imread()``` reads as a NumPy array ndarray of row ```(height) x column (width) x color (3)```.
       The order of color is ```BGR (blue, green, red)```.
+      ''', unsafe_allow_html=True)
 
-      The OpenCV function ```imwrite()``` that saves an image assumes that the order of colors is BGR, so it is saved as a correct image.
-    ''')
+    st.code('''img = cv2.imread('../Images and Videos/dog.png')''',
+            language='javascript')
+
+    st.markdown('''The OpenCV function ```imwrite()``` that saves an image assumes that the order of colors is BGR, so it is saved as a correct image.''', unsafe_allow_html=True)
+
+    code = '''cv2.imwrite('Save_Dog.png', img)'''
+    st.code(code, language='javascript')
+
+    st.markdown('''Convert RGB to Grayscale(1 Channel)''',
+                unsafe_allow_html=True)
+    code = '''gray = cv2.imread('../Images and Videos/dog.png', 0)'''
+    st.code(code, language='javascript')
+
+    st.markdown(
+        '''But when displaying the image, it show the image as RGB image instead BGR''', unsafe_allow_html=True)
+    code = '''cv2.imshow('BGR_Image', img)'''
+    st.code(code, language='javascript')
+
     if st.button('See Original Image'):
         original = Image.open('Images and Videos/dog.png')
         placeholder = st.image(original, use_column_width=True)
@@ -273,6 +299,18 @@ def image_01():
     st.success(f'Shape of the Grayscale image: {gray.shape}')
     st.success(f'dtype of the image: {img.dtype}')
     st.success(f'type of the image: {type(img)}')
+    st.markdown('''---''')
+    # with st.echo("python"):
+    #     fruits = ['apple', 'banana']
+    #     http_response = (404, 'Page Not Found')
+    #     st.radio("Choose Fruit", fruits)
+    #     st.text_input("HTTP Responses", http_response)
+
+    # code = '''def hello():
+    # print("Hello, Streamlit!")'''
+    # st.code(code, language='python')
+    st.markdown(get_binary_file_downloader_html(
+        '01 - Image/01-image_Processing.py', 'python file'), unsafe_allow_html=True)
 
 
 if __name__ == '__main__':
