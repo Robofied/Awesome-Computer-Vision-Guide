@@ -63,22 +63,22 @@ def welcome(nums, name):
     st.markdown('''
     # Computer Vision Tutorials &nbsp; ![](https://img.shields.io/github/forks/Robofied/Awesome-Computer-Vision-Guide?style=social) ![](https://img.shields.io/github/stars/Robofied/Awesome-Computer-Vision-Guide?style=social) ![](https://img.shields.io/github/watchers/Robofied/Awesome-Computer-Vision-Guide?style=social)
 
-![](https://img.shields.io/github/repo-size/Robofied/Awesome-Computer-Vision-Guide) ![](https://img.shields.io/github/license/Robofied/Awesome-Computer-Vision-Guide?color=red)    [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Robofied/Awesome-Computer-Vision-Guide)
-![](https://img.shields.io/github/issues/Robofied/Awesome-Computer-Vision-Guide?color=green) ![](https://img.shields.io/github/issues-pr/Robofied/Awesome-Computer-Vision-Guide?color=green) ![](https://img.shields.io/github/downloads/Robofied/Awesome-Computer-Vision-Guide/total) ![](https://img.shields.io/github/last-commit/Robofied/Awesome-Computer-Vision-Guide) ![](https://img.shields.io/github/contributors/Robofied/Awesome-Computer-Vision-Guide)
+    ![](https://img.shields.io/github/repo-size/Robofied/Awesome-Computer-Vision-Guide) ![](https://img.shields.io/github/license/Robofied/Awesome-Computer-Vision-Guide?color=red)    [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Robofied/Awesome-Computer-Vision-Guide)
+    ![](https://img.shields.io/github/issues/Robofied/Awesome-Computer-Vision-Guide?color=green) ![](https://img.shields.io/github/issues-pr/Robofied/Awesome-Computer-Vision-Guide?color=green) ![](https://img.shields.io/github/downloads/Robofied/Awesome-Computer-Vision-Guide/total) ![](https://img.shields.io/github/last-commit/Robofied/Awesome-Computer-Vision-Guide) ![](https://img.shields.io/github/contributors/Robofied/Awesome-Computer-Vision-Guide)
 
-  Computer Vision is one of the hottest topics in artificial intelligence. It is making tremendous advances in self-driving cars, robotics as well as in various photo correction apps. Steady progress in object detection is being made every day. GANs is also a thing researchers are putting their eyes on these days. Vision is showing us the future of technology and we can’t even imagine what will be the end of its possibilities.
+    Computer Vision is one of the hottest topics in artificial intelligence. It is making tremendous advances in self-driving cars, robotics as well as in various photo correction apps. Steady progress in object detection is being made every day. GANs is also a thing researchers are putting their eyes on these days. Vision is showing us the future of technology and we can’t even imagine what will be the end of its possibilities.
 
- So do you want to take your first step in Computer Vision and participate in this latest movement? Welcome you are at the right place. From this article, we’re going to have a series of tutorials on the basics of image processing and object detection. This is the first part of OpenCV tutorial for beginners and the complete set of the series is as follows:
+    So do you want to take your first step in Computer Vision and participate in this latest movement? Welcome you are at the right place. From this article, we’re going to have a series of tutorials on the basics of image processing and object detection. This is the first part of OpenCV tutorial for beginners and the complete set of the series is as follows:
 
-# Clone git repository
+    # Clone git repository
 
-```sh
-    $ git clone "https://github.com/Robofied/Awesome-Computer-Vision-Guide"
-```
+    ```sh
+        $ git clone "https://github.com/Robofied/Awesome-Computer-Vision-Guide"
+    ```
 
-You can run and edit the algorithms or contribute to them using [Gitpod.io](https://www.gitpod.io/), a free online development environment, with a single click.
+    You can run and edit the algorithms or contribute to them using [Gitpod.io](https://www.gitpod.io/), a free online development environment, with a single click.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](http://gitpod.io/#https://github.com/Robofied/Awesome-Computer-Vision-Guide)
+    [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](http://gitpod.io/#https://github.com/Robofied/Awesome-Computer-Vision-Guide)
 
     ''')
 
@@ -155,27 +155,27 @@ You can run and edit the algorithms or contribute to them using [Gitpod.io](http
             right.markdown(link, unsafe_allow_html=True)
 
     st.markdown('''
-    # License
+        # License
 
-Licensed under the [MIT License](LICENSE)
+    Licensed under the [MIT License](LICENSE)
 
-# Contributing to Awesome Computer Vision Guide
+    # Contributing to Awesome Computer Vision Guide
 
-All contributions, bug reports, bug fixes, documentation improvements, enhancements and ideas are welcome.
+    All contributions, bug reports, bug fixes, documentation improvements, enhancements and ideas are welcome.
 
-A detailed overview on how to contribute can be found in the contributing guide. There is also an overview on GitHub.
+    A detailed overview on how to contribute can be found in the contributing guide. There is also an overview on GitHub.
 
-If you are simply looking to start working with the voicenet codebase, navigate to the GitHub "issues" tab and start looking through interesting issues. There are a number of issues listed under Docs and good first issue where you could start out.
+    If you are simply looking to start working with the voicenet codebase, navigate to the GitHub "issues" tab and start looking through interesting issues. There are a number of issues listed under Docs and good first issue where you could start out.
 
-You can also triage issues which may include reproducing bug reports, or asking for vital information such as version numbers or reproduction instructions.
+    You can also triage issues which may include reproducing bug reports, or asking for vital information such as version numbers or reproduction instructions.
 
-Or maybe through using you have an idea of your own or are looking for something in the documentation and thinking ‘this can be improved’. You can do something about it!
+    Or maybe through using you have an idea of your own or are looking for something in the documentation and thinking ‘this can be improved’. You can do something about it!
 
-Feel free to ask questions on the mailing list or on Slack.
+    Feel free to ask questions on the mailing list or on Slack.
 
-# Contributor
+    # Contributor
 
-[Hritik Jaiswal](https://hritik5102.github.io)
+    [Hritik Jaiswal](https://hritik5102.github.io)
 
     ''')
 
@@ -266,8 +266,6 @@ def image_01():
     left, center, right = st.beta_columns(3)
 
     with left:
-        # left.subheader("RGB image")
-
         html_temp = """
         <h2 style="text-align:center;font-weight:bold">BGR Image</h2>
         """
@@ -275,7 +273,6 @@ def image_01():
         st.image(img, width=500, use_column_width=True)
 
     with center:
-        # left.subheader("RGB image")
         html_temp = """
         <h2 style="text-align:center;font-weight:bold">RGB Image</h2>
         """
@@ -284,7 +281,6 @@ def image_01():
                  width=500, use_column_width=True)
 
     with right:
-        # right.subheader("Grayscale image")
         html_temp = """
         <h2 style="text-align:center;font-weight:bold">Grayscale Image</h2>
         """
@@ -295,20 +291,13 @@ def image_01():
     # parameters
     #   1. Shape - Height, Width, Color
     #   2. dtype - type
+
     st.success(f'Shape of the Original image: {img.shape}')
     st.success(f'Shape of the Grayscale image: {gray.shape}')
     st.success(f'dtype of the image: {img.dtype}')
     st.success(f'type of the image: {type(img)}')
     st.markdown('''---''')
-    # with st.echo("python"):
-    #     fruits = ['apple', 'banana']
-    #     http_response = (404, 'Page Not Found')
-    #     st.radio("Choose Fruit", fruits)
-    #     st.text_input("HTTP Responses", http_response)
 
-    # code = '''def hello():
-    # print("Hello, Streamlit!")'''
-    # st.code(code, language='python')
     st.markdown(get_binary_file_downloader_html(
         '01 - Image/01-image_Processing.py', 'python file'), unsafe_allow_html=True)
 
