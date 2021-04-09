@@ -8,10 +8,7 @@ cv2.imshow('Original_image',img)
 def sketch(img):
 
     # Grayscale 
-    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    
-    # Digital negative
-    img_invert = cv2.bitwise_not(img_gray)
+    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) 
 
     # Gaussian Blur
     img_smoothing = cv2.GaussianBlur(img_gray, (21, 21), sigmaX=0, sigmaY=0)    
