@@ -56,6 +56,8 @@ def main():
         welcome(nums, name)
     if selected_box == list_of_folder_name[1]:
         image_01()
+    if selected_box == list_of_folder_name[2]:
+        video_02()
 
 
 def welcome(nums, name):
@@ -298,8 +300,31 @@ def image_01():
     st.success(f'type of the image: {type(img)}')
     st.markdown('''---''')
 
-    st.markdown(get_binary_file_downloader_html(
-        '01 - Image/01-image_Processing.py', 'python file'), unsafe_allow_html=True)
+    left, center, right = st.beta_columns(3)
+    with left:
+        left.markdown(get_binary_file_downloader_html(
+            '01 - Image/01-image_Processing.py', 'python file - 01'), unsafe_allow_html=True)
+    with center:
+        center.markdown(get_binary_file_downloader_html(
+            '01 - Image/02-image_Processing.py', 'python file - 02'), unsafe_allow_html=True)
+
+
+def video_02():
+    html_temp = """
+    <div>
+        <h2 style="text-align:center;font-weight:bold">Image processing using OpenCV and Python</h2>
+    </div>
+    <br/><br/>
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
+
+    html_temp = """
+    <div style="background-color:#02203c;padding:10px">
+    <h2 style="color:white;text-align:center;font-weight:bold">Capturing a video from a webcam or from video file</h2>
+    </div>
+    <br/><br/>
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
 
 
 if __name__ == '__main__':
