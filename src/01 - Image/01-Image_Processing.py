@@ -36,7 +36,7 @@ cv2.imshow('BGR_Image', img)
 # so it is saved as a correct image i.e. RGB image.
 cv2.imwrite('Save_Dog.png', img)
 
-# Convert RGB to Grayscale (1 Channel)
+# Convert RGB to Grayscale (1 Channel) : The 0 flag is cv2.CV_LOAD_IMAGE_GRAYSCALE.
 gray = cv2.imread('../Images and Videos/dog.png', 0)
 print('Grayscale shape:', gray.shape)
 
@@ -57,7 +57,8 @@ BGR_Img.show()
 # Save image using Pillow
 BGR_Img.save('Pillow_BGR.jpg')
 
-# Wait until ESC key is pressed
+# Wait until ESC key is pressed - if you remove the below statement then image will be display and then it will be closed down automatically
+# waitKey(0) = tells to wait for infinite time until user presses ESC key
 cv2.waitKey(0)
 
 # Distroy windows that we have created

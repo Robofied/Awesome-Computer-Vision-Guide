@@ -1,25 +1,53 @@
 '''
-Output : Image will be displayed using plt show
+Output : Image will be displayed using matplotlib
 '''
-import cv2
-import numpy as np
+from matplotlib import image
 import matplotlib.pyplot as plt
+import numpy as np
 
-# read an image
-#you can simply pass integers 1, 0 or -1 respectively.
-img = cv2.imread('model3.jpg',cv2.IMREAD_UNCHANGED)
-#you can resize window
-cv2.namedWindow('image' , cv2.WINDOW_NORMAL)
-#cv2.imshow() to display an image in a window
-cv2.imshow('image',img)
-# function wait for millisecond any key from keyboard to be 
-cv2.waitKey(0)
-#simply destroys all the windows we created
-cv2.destroyAllWindows()
-#Use the function cv2.imwrite() to save an image
-cv2.imwrite('model3_save.png',img)
 
-plt.imshow(img,cmap= 'red',interpolation = 'bicubic')
-plt.plot([50,200],[100,500],'c',linewidth = 10)
-plt.show()
+# Convert RGB To Grayscale - Using luminace formula
+def rgb2gray(rgb):
+    # Each inner list represents a pixel. Here, with an RGB image, there are 3 values. Since it's a black and white image, R, G, and B are all similar.
+    # Method 01 : We can also use this formula
+    #   1. np.dot(rgb[..., :3], [0.333, 0.333, 0.333])
+    # Method 02 : Luminance formula
+    #   2. np.dot(rgb[...,:3], [0.2989, 0.5870, 0.1140])
+    return np.dot(rgb[..., :3], [0.2989, 0.5870, 0.1140])
 
+
+def main():
+
+    # read an image
+    # Matplotlib relies on the Pillow library to load image data.
+    # Matplotlib read image in RGB Format, not in BGR format like cv2
+    img = image.imread('../Images and Videos/car2.jpg')
+
+    print('Original Image shape:', img.shape)  # 3 Channel
+    print('Original Image dtype:', img.dtype)  # Integer type
+    print('Original Image type:', type(img))   # Numpy ndarray
+
+    # So, you have your data in a numpy array (either by importing it, or by generating it). Let's render it. In Matplotlib, this is performed using the imshow() function.
+    # Default interpolations : bilinear
+    plt.imshow(img, interpolation='bilinear')
+    plt.title("RGB Image")
+    plt.show()
+
+    # Annotate image using matplotlib
+    plt.imshow(img)
+    plt.plot([250, 400], [250, 800], color="white", linewidth=10)
+    plt.title("Annotated image")
+    plt.show()
+
+    gray = rgb2gray(img)
+    plt.imshow(gray, cmap='gray', vmin=0, vmax=255)
+    plt.title("Grayscale Image")
+    plt.show()
+
+    # If you want to display the inverse grayscale, switch the cmap to cmap='gray_r'.
+    plt.imshow(gray, cmap='gray_r', vmin=0, vmax=255)
+    plt.title("Inverse Grayscale Image")
+    plt.show()
+
+
+main()

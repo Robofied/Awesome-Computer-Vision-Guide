@@ -22,7 +22,7 @@ def main():
         # Convert BGR to HSV
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-        # define range of blue color in HSV
+        # define range of blue color in HSV (Reference : https://colorpicker.me/)
         lower_blue = np.array([50, 150, 50])
         upper_blue = np.array([180, 255, 255])
 
