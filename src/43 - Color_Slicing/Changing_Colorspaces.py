@@ -132,14 +132,38 @@ You can see variety of inbuilt color spaces
 
 '''
 
+# RGB is a color model with three dimensions – red, green, and blue – that are mixed to produce a specific color. 
+# When defining colors in these dimensions, one has to know the sequence of colors in the color spectrum, e.g. that a mix of 100% red and green produces yellow. 
+# The RGB color model is often depicted as a cube by mapping the red, green, and blue dimensions onto the x, y, and z axis in 3D space. 
+# This is illustrated in the interactive example below, where all possible color mixes are represented within the bounds of the cube.
+
+# Reference : https://programmingdesignsystems.com/color/color-models-and-color-spaces/index.html#:~:text=HSV%20is%20a%20cylindrical%20color,on%20the%20RGB%20color%20circle.
+
 # BGR to RGB
 RGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+# HSV is a cylindrical color model that remaps the RGB primary colors into dimensions that are easier for humans to understand. 
+# Like the Munsell Color System, these dimensions are hue, saturation, and value.
+
+# Hue specifies the angle of the color on the RGB color circle : A 0° hue results in red, 120° results in green, and 240° results in blue.
+# Saturation controls the amount of color used. A color with 100% saturation will be the purest color possible, while 0% saturation yields grayscale.
+# Value controls the brightness of the color. A color with 0% brightness is pure black while a color with 100% brightness has no black mixed into the color. 
+# Because this dimension is often referred to as brightness, the HSV color model is sometimes called HSB, including in P5.js.
+
+# BGR to HSV
+HSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+
+# HSL is another cylindrical color model that shares two dimensions with HSV, while replacing the value dimension with a lightness dimension.
+
+# Hue specifies the angle of the color on the RGB color circle, exactly like HSV.
+# Saturation controls the purity of the color, exactly like HSV.
+# Lightness controls the luminosity of the color. 
+# This dimension is different from the HSV value dimension in that the purest color is positioned midway between black and white ends of the scale. A color with 0% lightness is black, 50% is the purest color possible, and 100% is white.
 
 # BGR to HSL
 HLS = cv2.cvtColor(image, cv2.COLOR_BGR2HLS)
 
-# BGR to HSV
-HSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
 # BGR to LUV
 LUV = cv2.cvtColor(image, cv2.COLOR_BGR2LUV)

@@ -3,8 +3,8 @@ Output : Flip the frame , capture a video and saving each and every frame
          saving a video in the form of .avi extension
 '''
 
+# Import package
 import cv2
-import numpy as np
 
 
 def main():
@@ -15,7 +15,7 @@ def main():
     fourcc = cv2.VideoWriter_fourcc(*'DIVX')
 
     # 1.video name 3.frame per sec 4.window size
-    out = cv2.VideoWriter('output.avi', fourcc, 20.0, (640, 480))
+    out = cv2.VideoWriter('output.mp4', fourcc, 20.0, (640, 480))
 
     while True:
         # Read frame

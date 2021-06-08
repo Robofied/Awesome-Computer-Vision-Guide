@@ -325,7 +325,20 @@ def video_02():
     <br/><br/>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
+    st.header("Original frame")
+    video_file = open('02 - Video/demo_output.mp4', 'rb')
+    video_bytes = video_file.read()
+    st.video(video_bytes, format='video/mp4', start_time=0)
 
+    st.header("Hue saturation value - HSV")
+    video_file = open('02 - Video/hsv.mp4', 'rb')
+    video_bytes = video_file.read()
+    st.video(video_bytes, format='video/mp4', start_time=0)
+
+    st.header("Result")
+    video_file = open('02 - Video/res.mp4', 'rb')
+    video_bytes = video_file.read()
+    st.video(video_bytes, format='video/mp4', start_time=0)
 
 if __name__ == '__main__':
     main()
