@@ -14,12 +14,13 @@ plt.imshow(img)
 plt.title("RGB Image")
 plt.show()
 
-# Here we see image dtype is float type because it varies depend upon the file format (jpg,jpeg,png)
-# In the case of PNG : dtype will be float
-# But for other format : dtype will be int only
 
+# Note the dtype there - float32. Matplotlib has rescaled the 8 bit data from each channel to floating point data between 0.0 and 1.0. 
 # So now instead of min value to be 0 and max value to be 255, it's min value = 0.0 and max values = 1.0
-# Matplotlib has rescaled the 8 bit data from each channel to floating point data between 0.0 and 1.0.
+# As a side note, the only datatype that Pillow can work with is uint8. Matplotlib plotting can handle float32 and uint8, 
+# but image reading/writing for any format other than PNG is limited to uint8 data. 
+
+# For RGB and RGBA images, Matplotlib supports float32 and uint8 data types. For grayscale, Matplotlib supports only float32.
 print(img)
 print('Original Image shape:', img.shape)  # 3 Channel
 print('Original Image dtype:', img.dtype)  # Float type
@@ -100,7 +101,7 @@ plt.show()
 # Set Clim
 '''
 Most often, the "interesting" part of the image is around the peak, and you can get extra contrast by clipping the regions above and/or below the peak. 
-In our histogram, it looks like there's not much useful information in the high end (not many white things in the image). 
+In our histogram, it looks like there's not much useful information on the upper end of histogram (frequency of white pixel is less in the image as compair to medium gray). 
 Let's adjust the upper limit, so that we effectively "zoom in on" part of the histogram. We do this by passing the clim argument to imshow.
 '''
 

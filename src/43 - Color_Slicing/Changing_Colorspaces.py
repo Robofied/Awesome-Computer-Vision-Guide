@@ -20,6 +20,10 @@ cv2.destroyAllWindows()
 
 
 # Grayscale without using inbuilt function (Reference : https://docs.opencv.org/master/de/d25/imgproc_color_conversions.html)
+# Grayscale images do not include any color. They are given in the range of shades that lie between black and white. 
+# For example, white is represented by 255, 255, 255, black is represented by 0, 0, 0, and medium gray is 127, 127, 127. 
+# The higher the number is, the lighter the gray becomes.
+
 '''
     Method 01 - Averaging - R,G,B values
                 Y = (R+G+B)/3
@@ -39,6 +43,15 @@ cv2.destroyAllWindows()
     spectral weighting functions employed, but the green coefficient will be quite large, the red will have an intermediate value,
     and the blue coefficient will be the smallest of the three.
 
+    Computation Example: Let's say we have a color that can be represented by the RGB value 70, 130, 180. The weighted average for our RGB color (70, 130, 180) is as follows:
+
+        Y = 0.299(70) + 0.587(130) + 0.114(180)
+        Y = 117.76
+
+        When the weighted average does not equate to a whole number, we round it to the nearest whole. As such, our computed equivalent gray is Y = 118
+        Hence RGB(70, 130, 180) => Grayscale(180)
+
+    Reference : https://goodcalculators.com/rgb-to-grayscale-conversion-calculator/
 '''
 
 # Intialize a new array of zeroes with the same shape

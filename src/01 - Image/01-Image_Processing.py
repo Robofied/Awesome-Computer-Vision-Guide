@@ -36,6 +36,13 @@ cv2.imshow('BGR_Image', img)
 # so it is saved as a correct image i.e. RGB image.
 cv2.imwrite('Save_Dog.png', img)
 
+'''
+Grayscale images do not include any color. They are given in the range of shades that lie between black and white.
+For example, white is represented by 255, 255, 255, black is represented by 0, 0, 0, and medium gray is 127, 127, 127. The higher the number is, the lighter the gray becomes.
+"Any shades of black and white" is represented by X, X, X. which means that all channel will have equal itensity. But this will not always be the case.
+There is different ways to convert RGB to grayscale, where green channel will have more weight then red and green (something like : 0.2989*Red + 0.5870*Green + 0.1140*Blue )
+'''
+
 # Convert RGB to Grayscale (1 Channel) : The 0 flag is cv2.CV_LOAD_IMAGE_GRAYSCALE.
 gray = cv2.imread('../Images and Videos/dog.png', 0)
 print('Grayscale shape:', gray.shape)

@@ -58,6 +58,8 @@ def main():
         image_01()
     if selected_box == list_of_folder_name[2]:
         video_02()
+    if selected_box == list_of_folder_name[3]:
+        matplotlib_03()
 
 
 def welcome(nums, name):
@@ -308,6 +310,7 @@ def image_01():
         center.markdown(get_binary_file_downloader_html(
             '01 - Image/02-image_Processing.py', 'python file - 02'), unsafe_allow_html=True)
 
+# ffmpeg -i Original_frame.avi -vcodec libx264 flip_frame.mp4
 
 def video_02():
     html_temp = """
@@ -335,10 +338,123 @@ def video_02():
     video_bytes = video_file.read()
     st.video(video_bytes, format='video/mp4', start_time=0)
 
-    st.header("Result")
+    st.header("Blue color detected")
     video_file = open('02 - Video/res.mp4', 'rb')
     video_bytes = video_file.read()
     st.video(video_bytes, format='video/mp4', start_time=0)
+
+    st.header("Flip Operation")
+    video_file = open('02 - Video/flip_frame.mp4', 'rb')
+    video_bytes = video_file.read()
+    st.video(video_bytes, format='video/mp4', start_time=0)
+
+def matplotlib_03():
+    
+    html_temp = """
+    <div>
+        <h2 style="text-align:center;font-weight:bold">Image processing using OpenCV and Python</h2>
+    </div>
+    <br/><br/>
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
+
+    html_temp = """
+    <div style="background-color:#02203c;padding:10px">
+    <h2 style="color:white;text-align:center;font-weight:bold">Image operation using Matplotlib</h2>
+    </div>
+    <br/><br/>
+    """
+    html_temp = """
+                <h2 style="font-weight:bold">Display a sample image using Matplotlib</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_1.png', use_column_width=True)
+    
+    html_temp = """
+                <h2 style="font-weight:bold">Annotate image using Matplotlib</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    # with st.beta_expander("🧙 Click here to view the image 🔮"):
+    st.image('03 - Matplotlib/Figure_2.png', width=400, use_column_width=True)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Display a Grayscale image using Matplotlib</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_3.png', width=400, use_column_width=True)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Display a Digital negative image using Matplotlib</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_4.png', width=400, use_column_width=True)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Display an 24-bit RGB image</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_6.png', width=400, use_column_width=True)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Display individual 8bit (Red, Green, Blue) image</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_6.png', width=400, use_column_width=True)
+
+
+    html_temp = """
+                <h2 style="font-weight:bold">Display image when Colormap is set to "hot"</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_7.png', width=400, use_column_width=True)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Display image when Colormap is set to "nipy_spectral"</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_8.png', width=400, use_column_width=True)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Color scale reference</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_9.png', width=400, use_column_width=True)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Histogram plot - To Define the thresold</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_10.png', width=400, use_column_width=True)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Original image Vs Contrast enhanced image</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_11.png', width=400, use_column_width=True)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Expand contrast by cliping upper end of histogram</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_12.png', width=400, use_column_width=True)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Interpolation = "bilinear"[pixelated]</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_13.png', width=400, use_column_width=True)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Interpolation = "nearest"</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+
+    st.image('03 - Matplotlib/Figure_14.png', width=400, use_column_width=True)
+    html_temp = """
+                <h2 style="font-weight:bold">Interpolation = "bicubic"</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('03 - Matplotlib/Figure_15.png', width=400, use_column_width=True)
 
 if __name__ == '__main__':
     main()
