@@ -60,6 +60,8 @@ def main():
         video_02()
     if selected_box == list_of_folder_name[3]:
         matplotlib_03()
+    if selected_box == list_of_folder_name[4]:
+        drawing_function_04()
 
 
 def welcome(nums, name):
@@ -178,10 +180,16 @@ def welcome(nums, name):
     Feel free to ask questions on the mailing list or on Slack.
 
     # Contributor
-
-    [Hritik Jaiswal](https://hritik5102.github.io)
-
     ''')
+    html_temp = """
+
+    |                                                                                                                                                                                                                   <a href="https://hritik5102.github.io/"><img src="https://avatars.githubusercontent.com/hritik5102" width="150px" height="150px" /></a>                                                                                                                                                                                                                    |
+    | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+    |                                                                                                                                                                                                                                                             **[Hritik Jaiswal](https://linktr.ee/hritikdj)**                                                                                                                                                                                                                                                              |
+    | <a href="https://twitter.com/imhritik_dj"><img src="https://i.ibb.co/kmgQVyW/twitter.png" width="32px" height="32px"></a> <a href="https://github.com/hritik5102"><img src="https://cdn.iconscout.com/icon/free/png-256/github-108-438008.png" width="32px" height="32px"></a> <a href="https://www.facebook.com/hritik.jaiswal.56808"><img src="https://i.ibb.co/zmYNW4p/facebook.png" width="32px" height="32px"></a> <a href="https://www.linkedin.com/in/hritik-jaiswal-22a136166/"><img src="https://i.ibb.co/Kx2GSrT/linkedin.png" width="32px" height="32px"></a> |
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
+
 
 
 def get_binary_file_downloader_html(bin_file, file_label='File'):
@@ -360,10 +368,12 @@ def matplotlib_03():
 
     html_temp = """
     <div style="background-color:#02203c;padding:10px">
-    <h2 style="color:white;text-align:center;font-weight:bold">Image operation using Matplotlib</h2>
+    <h2 style="color:white;text-align:center;font-weight:bold">Exploring Image operation in Matplotlib</h2>
     </div>
     <br/><br/>
     """
+    st.markdown(html_temp, unsafe_allow_html=True)
+
     html_temp = """
                 <h2 style="font-weight:bold">Display a sample image using Matplotlib</h2>
                 """
@@ -455,6 +465,86 @@ def matplotlib_03():
                 """
     st.markdown(html_temp, unsafe_allow_html=True)
     st.image('03 - Matplotlib/Figure_15.png', width=400, use_column_width=True)
+
+
+def drawing_function_04():
+    html_temp = """
+    <div>
+        <h2 style="text-align:center;font-weight:bold">Image processing using OpenCV and Python</h2>
+    </div>
+    <br/><br/>
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
+
+    html_temp = """
+    <div style="background-color:#02203c;padding:10px">
+    <h2 style="color:white;text-align:center;font-weight:bold">Exploring Drawing function in OpenCV</h2>
+    </div>
+    <br/><br/>
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    html_temp = """
+                <h2 style="font-weight:bold">Draw a line</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('04 - Drawing Shapes/Figure_1.png', width=500)
+    
+    html_temp = """
+                <h2 style="font-weight:bold">Draw a rectangle</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    # with st.beta_expander("🧙 Click here to view the image 🔮"):
+    st.image('04 - Drawing Shapes/Figure_2.png', width=500)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Fill the rectangle</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('04 - Drawing Shapes/Figure_3.png', width=500)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Draw a circle</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('04 - Drawing Shapes/Figure_4.png', width=500)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Draw a ellipse</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('04 - Drawing Shapes/Figure_6.png', width=500)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Draw a polygon</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('04 - Drawing Shapes/Figure_6.png', width=500)
+
+
+    html_temp = """
+                <h2 style="font-weight:bold">Original image for testing</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('Images and Videos/image8.jpg', width=500)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Draw a line on an image</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('04 - Drawing Shapes/Figure_7.png', width=500)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Draw a Rectangle on an image</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('04 - Drawing Shapes/Figure_8.png', width=500)
+
+    html_temp = """
+                <h2 style="font-weight:bold">Put a text on an image</h2>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image('04 - Drawing Shapes/Figure_9.png', width=500)
+
 
 if __name__ == '__main__':
     main()

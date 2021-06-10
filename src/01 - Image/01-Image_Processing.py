@@ -14,7 +14,7 @@ from PIL import Image
 # On the other hand, in Pillow, the order of colors is assumed to be RGB (red, green, blue).
 
 # When reading a color image file, OpenCV imread() reads as a NumPy array ndarray of row (height) x column (width) x color (3).
-# The order of color is BGR (blue, green, red).
+# The function imread loads an image from the specified file and returns it. If the image cannot be read (because of missing file, improper permissions, unsupported or invalid format), the function returns an empty matrix
 img = cv2.imread('../Images and Videos/dog.png')
 
 '''
@@ -40,7 +40,7 @@ cv2.imwrite('Save_Dog.png', img)
 Grayscale images do not include any color. They are given in the range of shades that lie between black and white.
 For example, white is represented by 255, 255, 255, black is represented by 0, 0, 0, and medium gray is 127, 127, 127. The higher the number is, the lighter the gray becomes.
 "Any shades of black and white" is represented by X, X, X. which means that all channel will have equal itensity. But this will not always be the case.
-There is different ways to convert RGB to grayscale, where green channel will have more weight then red and green (something like : 0.2989*Red + 0.5870*Green + 0.1140*Blue )
+There is different ways to convert RGB to grayscale, where green channel will have more weight then red and green (something like : Y = 0.2989*Red + 0.5870*Green + 0.1140*Blue )
 '''
 
 # Convert RGB to Grayscale (1 Channel) : The 0 flag is cv2.CV_LOAD_IMAGE_GRAYSCALE.
