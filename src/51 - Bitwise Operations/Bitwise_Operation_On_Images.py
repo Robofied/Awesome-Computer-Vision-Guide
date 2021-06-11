@@ -3,10 +3,10 @@
 # Reference article : https://www.geeksforgeeks.org/arithmetic-operations-on-images-using-opencv-set-2-bitwise-operations-on-binary-images/
 # Bitwise operations used are :
 '''
-     1.   AND
-     2.   OR
-     3.   XOR
-     4.   NOT
+AND: A bitwise AND is true if and only if both pixels are greater than zero.
+OR: A bitwise OR is true if either of the two pixels is greater than zero.
+XOR: A bitwise XOR is true if and only if one of the two pixels is greater than zero, but not both.
+NOT: A bitwise NOT inverts the “on” and “off” pixels in an image.
 '''
 # Also, Bitwise operations helps in image masking.
 # Image creation can be enabled with the help of these operations.

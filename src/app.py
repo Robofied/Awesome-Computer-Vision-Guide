@@ -62,7 +62,8 @@ def main():
         matplotlib_03()
     if selected_box == list_of_folder_name[4]:
         drawing_function_04()
-
+    if selected_box == list_of_folder_name[5]:
+        masking_05()
 
 def welcome(nums, name):
     st.image('Images and Videos/Robofied.png', use_column_width=True)
@@ -544,6 +545,117 @@ def drawing_function_04():
                 """
     st.markdown(html_temp, unsafe_allow_html=True)
     st.image('04 - Drawing Shapes/Figure_9.png', width=500)
+
+
+def masking_05():
+
+    html_temp = """
+    <div>
+        <h2 style="text-align:center;font-weight:bold">Image processing using OpenCV and Python</h2>
+    </div>
+    <br/><br/>
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
+
+    html_temp = """
+    <div style="background-color:#02203c;padding:10px">
+    <h2 style="color:white;text-align:center;font-weight:bold">Masking operation in OpenCV</h2>
+    </div>
+    <br/><br/>
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.header("Example 1 : Extract Blue Color from OpenCV Logo")
+    left, right = st.beta_columns(2)
+    with left:
+        html_temp = """
+                    <h3 style="font-weight:bold">Sample image : OpenCV Logo</h3>
+                    """
+        st.markdown(html_temp, unsafe_allow_html=True)
+        st.image('Images and Videos/opencv-logo.png', width=300)
+
+    with right:       
+        html_temp = """
+                    <h3 style="font-weight:bold">HSV Image</h3>
+                    """
+        st.markdown(html_temp, unsafe_allow_html=True)
+        st.image('05 - Masking/Figure_1.png', width=300)
+
+    
+    left, right = st.beta_columns(2)
+
+    with left:
+        html_temp = """
+        <h3 style="font-weight:bold">Masking blue region</h3>
+        """
+        st.markdown(html_temp, unsafe_allow_html=True)
+        st.image('05 - Masking/Figure_2.png', width=300)
+
+    with right:
+        html_temp = """
+        <h3 style="font-weight:bold">Extract Blue Color from Image</h3>
+        """
+        st.markdown(html_temp, unsafe_allow_html=True)
+
+        st.image('05 - Masking/Figure_3.png', width=300)
+
+    left,center,right = st.beta_columns(3)
+    with center:
+        html_temp = """
+        <h3 style="text-align:center;font-weight:bold">Convert background from black to white</h3>
+        """
+        st.markdown(html_temp, unsafe_allow_html=True)
+        st.image('05 - Masking/Figure_4.png', width=300)
+
+    st.header("Example 2 : Rectangular masking")
+    left,center,right = st.beta_columns(3)
+    with center:
+        html_temp = """
+        <h3 style="text-align:center;font-weight:bold">Sample image : Messi</h3>
+        """
+        st.markdown(html_temp, unsafe_allow_html=True)
+        st.image('Images and Videos/target.jpg', width=300)
+
+    left, right = st.beta_columns(2)
+
+    with left:
+        html_temp = """
+        <h3 style="font-weight:bold">Construct a rectangular mask</h3>
+        """
+        st.markdown(html_temp, unsafe_allow_html=True)
+        st.image('05 - Masking/Figure_5.png', width=300)
+
+    with right:
+        html_temp = """
+        <h3 style="font-weight:bold">Extract Messi from the Image</h3>
+        """
+        st.markdown(html_temp, unsafe_allow_html=True)
+        st.image('05 - Masking/Figure_6.png', width=300)
+
+    st.header("Example 3 : Circular masking")
+    left,center,right = st.beta_columns(3)
+    with center:
+        html_temp = """
+        <h3 style="text-align:center;font-weight:bold">Sample image : Earth</h3>
+        """
+        st.markdown(html_temp, unsafe_allow_html=True)
+        st.image('Images and Videos/earth.jpg', width=300)
+
+    left, right = st.beta_columns(2)
+
+    with left:
+        html_temp = """
+        <h3 style="font-weight:bold">Construct a circular mask</h3>
+        """
+        st.markdown(html_temp, unsafe_allow_html=True)
+        st.image('05 - Masking/Figure_7.png', width=300)
+
+    with right:
+        html_temp = """
+        <h3 style="font-weight:bold">Extract Earth from the Image</h3>
+        """
+        st.markdown(html_temp, unsafe_allow_html=True)
+        st.image('05 - Masking/Figure_8.png', width=300)
+
 
 
 if __name__ == '__main__':
