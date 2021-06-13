@@ -128,7 +128,7 @@ As in one-dimensional signals, images also can be filtered with various low-pass
 
 OpenCV provides a function **`cv2.filter2D()`** to convolve a kernel with an image. As an example, we will try an averaging filter on an image. A 5x5 averaging filter kernel will look like the below:
 
-<p align="center"><img src="https://i.stack.imgur.com/Wv0uI.png"</p>
+<p align="center"><img src="https://i.stack.imgur.com/TRAtW.png"</p>
 
 The operation works like this: keep this kernel above a pixel, add all the 25 pixels below this kernel, take the average, and replace the central pixel with the new average value. 
 
@@ -150,11 +150,53 @@ To perform averaging in OpenCV we use both **`cv2.blur()`** and **`cv2.boxFilter
 If you don't want to use a normalized box filter, use cv.boxFilter(). Pass an argument normalize=False to the function.
 ```
 
+**`Example 01`**
 
-As we can see our output images are quite blurred. However, there are some problems with that. When we want to smooth an image our goal is to remove noise, bat we want to preserve smooth behavior of our edges in the image. However, we can see that the Averaging filter gives rather poor blurring result. This is due to the fact that all pixel within a filter matrix have the same coefficients. We will see that a better result will be obtained with the Gaussian filter where more emphasis is a given to the central area. On the other hand, the peripheral pixels have relatively smaller impact on the filtering with a Gaussian matrix.
+<p align="center"><img src="https://docs.opencv.org/master/filter.jpg"></p>
+
+**`Example 02`**
+
+<p align="center"><img src="http://media5.datahacker.rs/2020/05/download9-1024x341.png"></p>
 
 
 
+As we can see our output images are quite blurred. However, there are some problems with that. When we want to smooth an image our goal is to remove noise, but we want to preserve smooth behavior of our edges in the image. However, we can see that the Averaging filter gives rather poor blurring result. This is due to the fact that all pixel within a filter matrix have the same coefficients. We will see that a better result will be obtained with the Gaussian filter where more emphasis is a given to the central area. On the other hand, the peripheral pixels have relatively smaller impact on the filtering with a Gaussian matrix.
+
+## **Gaussian filter**
+
+Apart from the averaging filter we can use several other common filters to perform image blurring. Now we are going to explore a slightly more complicated filter. It is the most commonly used kernel in image processing and it is called the Gaussian filter. For the creation of this filter we use the famous Gaussian function. This function represents the probability that events are centered around the mean value. Furthermore, the standard deviation (σ) of this function controls how wide this distribution would be. By sampling this function values we will get  coefficients for a Gaussian filter matrix. Effect of different (σ) values can be observed in the following image.
+
+<p align="center"><img src="http://media5.datahacker.rs/2020/05/image5.png"></p>
+
+In the image below we can see a 2D Gaussian distribution. Now, when you look at it in 3D, it becomes more obvious how the coefficient values are generated.
+
+<p align="center"><img src="https://3.bp.blogspot.com/-cVNi7VZLB_A/V3WTNVSHSqI/AAAAAAAAAuY/J1SN00PpFGoYWgKLKo-Pa_UozqZXmDb4ACLcB/s1600/GaussianKernel.png"></p>
+
+
+<p align="center"><img src="http://media5.datahacker.rs/2019/05/gaussian_2d-1-768x634.png"></p>
+
+
+<p align="center"><img src="http://media5.datahacker.rs/2020/04/OIWce-768x576.png"></p>
+
+Now, when we know what is a Gaussian distribution we can focus on our code. Here, we will use a function **`cv2.GaussianBlur()`**. Similarly to a averaging filter, we provide a tuple that represents our filter size. This is how our 3×3 filter looks like:
+
+<p align="center"><img src="http://media5.datahacker.rs/2020/04/24-768x639.jpg"></p>
+
+We should specify the **`width`** and **`height`** of the kernel which should be positive and odd. We also should specify the standard deviation in the X and Y directions i.e. **`σx – standard deviation`** (sigmaX) and **`σy – standard deviation`** (sigmaY) respectively. 
+
+- If only sigmaX is specified, sigmaY is taken as the same as sigmaX. 
+- If both are given as zeros, they are calculated from the kernel size. 
+
+Gaussian blurring is highly effective in removing Gaussian noise from an image.
+
+If you want, you can create a Gaussian kernel with the function, [cv.getGaussianKernel()](https://docs.opencv.org/master/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa).
+
+The above code can be modified for Gaussian blurring:
+
+```py
+blur = cv.GaussianBlur(img,(5,5),0)
+```
+<p align="center"><img src="http://media5.datahacker.rs/2019/05/Featured-Image-005-Averaging.png"></p>
 
 ## Reference 
 

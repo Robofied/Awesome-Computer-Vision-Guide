@@ -30,6 +30,27 @@ for i in range(0,2):
 plt.show()
 
 '''
+Custom kernel operation 
+'''
+
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+image = cv2.imread('../Images and Videos/logo.png')
+
+kernel = np.ones((3,3),np.float32) * (-1)
+kernel[1,1] = 8
+print(kernel)
+dst = cv2.filter2D(image,-1,kernel)
+
+plt.subplot(121),plt.imshow(image),plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(122),plt.imshow(dst),plt.title('Custom kernel Operation')
+plt.xticks([]), plt.yticks([])
+plt.show()
+
+'''
 Performing average smoothening, Same as 
 '''
 avg_smooth_3x3 = cv2.blur(img, (3,3))   
@@ -48,15 +69,37 @@ for i in range(0,6):
 
 plt.show()
 
+'''
+Performing average smoothening, Same as 
+'''
+avg_smooth_3x3 =  cv2.boxFilter(img, ddepth=-1, ksize=(3,3), normalize=True)   
+avg_smooth_5x5 =  cv2.boxFilter(img, ddepth=-1, ksize=(5,5), normalize=True)   
+avg_smooth_7x7 =  cv2.boxFilter(img, ddepth=-1, ksize=(7,7), normalize=True)   
+avg_smooth_9x9 =  cv2.boxFilter(img, ddepth=-1, ksize=(9,9), normalize=True)   
+avg_smooth_11x11 =  cv2.boxFilter(img, ddepth=-1, ksize=(11,11), normalize=True)   
+
+images = [img,avg_smooth_3x3,avg_smooth_5x5,avg_smooth_7x7,avg_smooth_9x9,avg_smooth_11x11]
+titles = ['Original image', 'Box filtering - 3x3','Box filtering - 5x5','Box filtering - 7x7','Box filtering - 9x9','Box filtering - 11x11']
+
+for i in range(0,6):
+    plt.subplot(2,3,(i+1))
+    plt.imshow(images[i])
+    plt.xlabel(titles[i])
+
+plt.show()
+
 img2 = cv2.imread('../Images and videos/Gaussian-noise.jpg')
 
-gaussian = cv2.GaussianBlur(img2, (5,5), 0)
+gaussian_3x3 = cv2.GaussianBlur(img2, (3,3), sigmaX=0, sigmaY=0)
+gaussian_5x5 = cv2.GaussianBlur(img2, (5,5), sigmaX=0, sigmaY=0)
+gaussian_7x7 = cv2.GaussianBlur(img2, (7,7), sigmaX=0, sigmaY=0)
+gaussian_9x9 = cv2.GaussianBlur(img2, (9,9), sigmaX=0, sigmaY=0)
+gaussian_11x11 = cv2.GaussianBlur(img2, (11,11), sigmaX=0, sigmaY=0)
+images = [img2, gaussian_3x3, gaussian_5x5, gaussian_7x7, gaussian_9x9, gaussian_11x11]
+titles = ['Original', 'Gaussian Smoothening - 3x3','Gaussian Smoothening - 5x5','Gaussian Smoothening - 7x7','Gaussian Smoothening - 9x9','Gaussian Smoothening - 11x11']
 
-images = [img2,gaussian]
-titles = ['Original', 'Gaussian Smoothening']
-
-for i in range(0,2):
-    plt.subplot(1,2,(i+1))
+for i in range(0,6):
+    plt.subplot(2,3,(i+1))
     plt.imshow(images[i],'gray')
     plt.xlabel(titles[i])
 
