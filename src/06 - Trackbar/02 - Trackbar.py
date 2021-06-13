@@ -9,7 +9,6 @@ import numpy as np
 
 # Callback Function which helps to get the position of trackbar 
 def nothing(x):
-    print(f"Position at : {x}")
     pass
 
 cv2.namedWindow('trackbars')

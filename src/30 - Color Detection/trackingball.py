@@ -80,7 +80,7 @@ while 1:
 
     k = cv2.waitKey(1) & 0xFF
     if k == 27:
-        sbreak                          
+        break                          
 
 cap.release()
 cv2.destroyAllWindows()
