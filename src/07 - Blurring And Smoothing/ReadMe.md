@@ -138,10 +138,17 @@ In the picture below we can see that the input image on the left is processed wi
 
 <p align="center"><img src="http://media5.datahacker.rs/2019/05/96-1024x631.png"></p>
 
+Now, as the filter **`H(u,v)`** is being moved around the image **`F(x,y)`**, the new image **`G(x,y)`** on the right is generated.
+
 It simply takes the average of all the pixels under the kernel area and replaces the central element. This is done by the function **`cv2.blur()`** or **`cv2.boxFilter()`**. Check the docs for more details about the kernel. We should specify the width and height of the kernel. A 3x3 normalized box filter would look like the below:
 
 <p align="center"><img src="https://hub.packtpub.com/wp-content/uploads/2018/04/image6-4.png"></p>
 
+The idea of mean filtering is simply to replace each pixel value in an image with the **`mean(average)`** value of its neighbors, including itself. This has the effect of eliminating pixel values which are unrepresentative of their surroundings. Mean filtering is usually thought of as a **`convolution`** filter. Like other convolutions it is based around a kernel, which represents the shape and size of the neighborhood to be sampled when calculating the mean. Often a `3×3` square kernel is used, although larger kernels (e.g. `5×5` squares) can be used for more severe smoothing. 
+
+**`NOTE`**
+
+That a small kernel can be applied more than once in order to produce a similar but not identical effect as a single pass with a large kernel.
 
 To perform averaging in OpenCV we use both **`cv2.blur()`** and **`cv2.boxFilter()`** functions. There are only two arguments required: an image that we want to blur and the size of the filter. We have chosen three different sizes for the filter to demonstrate that the output image will become more blurred as the filter size increases.
 
@@ -170,17 +177,25 @@ Apart from the averaging filter we can use several other common filters to perfo
 
 In the image below we can see a 2D Gaussian distribution. Now, when you look at it in 3D, it becomes more obvious how the coefficient values are generated.
 
-<p align="center"><img src="https://3.bp.blogspot.com/-cVNi7VZLB_A/V3WTNVSHSqI/AAAAAAAAAuY/J1SN00PpFGoYWgKLKo-Pa_UozqZXmDb4ACLcB/s1600/GaussianKernel.png"></p>
+<p align="center"><img src="https://3.bp.blogspot.com/-cVNi7VZLB_A/V3WTNVSHSqI/AAAAAAAAAuY/J1SN00PpFGoYWgKLKo-Pa_UozqZXmDb4ACLcB/s1600/GaussianKernel.png" width="300px"></p>
+
+where **`x`** and **`y`** are the respective distances to the horizontal and vertical center of the kernel and **`sigma`** is the standard deviation of the Gaussian kernel.
 
 
-<p align="center"><img src="http://media5.datahacker.rs/2019/05/gaussian_2d-1-768x634.png"></p>
+<p align="center"><img src="http://media5.datahacker.rs/2019/05/gaussian_2d-1-768x634.png" width="300px"></p>
 
 
-<p align="center"><img src="http://media5.datahacker.rs/2020/04/OIWce-768x576.png"></p>
+<p align="center"><img src="http://media5.datahacker.rs/2020/04/OIWce-768x576.png" width="300px"></p>
+
+```
+Effect of gaussian on varying sigma 
+```
+
+<p align="center"><img src="https://i.ibb.co/HHLFQsf/gauss.jpg" alt="gauss" border="0" width="300px"></p>
 
 Now, when we know what is a Gaussian distribution we can focus on our code. Here, we will use a function **`cv2.GaussianBlur()`**. Similarly to a averaging filter, we provide a tuple that represents our filter size. This is how our 3×3 filter looks like:
 
-<p align="center"><img src="http://media5.datahacker.rs/2020/04/24-768x639.jpg"></p>
+<p align="center"><img src="http://media5.datahacker.rs/2020/04/24-768x639.jpg" width="300px"></p>
 
 We should specify the **`width`** and **`height`** of the kernel which should be positive and odd. We also should specify the standard deviation in the X and Y directions i.e. **`σx – standard deviation`** (sigmaX) and **`σy – standard deviation`** (sigmaY) respectively. 
 
@@ -196,7 +211,34 @@ The above code can be modified for Gaussian blurring:
 ```py
 blur = cv.GaussianBlur(img,(5,5),0)
 ```
-<p align="center"><img src="http://media5.datahacker.rs/2019/05/Featured-Image-005-Averaging.png"></p>
+<p align="center"><img src="http://media5.datahacker.rs/2019/05/Featured-Image-005-Averaging.png" width="300px"></p>
+
+<p align="center"><img src="http://media5.datahacker.rs/2020/05/download10-1024x341.png"></p>
+
+
+As you can see our image filtered with Gaussian filter is less, but more naturally blurred. Why? Because all pixels in the kernel neighborhood of an averaging filter have equal weight. On the other hand, in Gaussian filter there are higher values at center pixels and the lower values in pixels moving away from the center. That is why with Gaussian filter we preserve edges which will appear sharper in our output image.
+
+## **Median filter - Non linear filter**
+
+Traditionally, the median blur method has been most effective when removing salt-and-pepper noise. This type of noise is exactly what it sounds like: imagine taking a photograph, putting it on your dining room table, and sprinkling salt and pepper on top of it. Using the median blur method, you could remove the salt and pepper from your image.
+
+Median filtering is a **`nonlinear operation`** often used in image processing to reduce "salt and pepper" noise.
+
+<p align="center"><img src="https://i.ibb.co/Jm1TJ5j/Salt-and-papper-noise.jpg" alt="Salt-and-papper-noise" border="0"></p>
+
+Here, the function **`cv2.medianBlur()`** takes the median of all the pixels under the kernel area and the central element is replaced with this median value. This is highly effective against salt-and-pepper noise in an image. Interestingly, in the above filters, the central element is a newly calculated value which may be a pixel value in the image or a new value. But in median blurring, the central element is always replaced by some pixel value in the image. It reduces the noise effectively. Its kernel size should be a positive odd integer.
+
+When applying a median blur, we first define our kernel size. Then, as in the averaging blurring method, we consider all pixels in the neighborhood of size K \times K where K is an odd integer.
+
+<p align="center"><img src="https://i.ibb.co/Hn0f6YL/Median-filter.jpg" alt="Median-filter" border="0"></p>
+
+Notice how, unlike average blurring and Gaussian blurring where the kernel size could be rectangular, the kernel size for the median must be square. Furthermore (unlike the averaging method), instead of replacing the central pixel with the average of the neighborhood, we instead replace the central pixel with the median of the neighborhood.
+
+The reason median blurring is more effective at removing salt-and-pepper style noise from an image is that each central pixel is always replaced with a pixel intensity that exists in the image. And since the median is robust to outliers, the salt-and-pepper noise will be less influential to the median than another statistical method, such as the average.
+
+Again, methods such as averaging and Gaussian compute means or weighted means for the neighborhood — this average pixel intensity may or may not be present in the neighborhood. But by definition, the median pixel must exist in our neighborhood. By replacing our central pixel with a median rather than an average, we can substantially reduce noise.
+
+
 
 ## Reference 
 
