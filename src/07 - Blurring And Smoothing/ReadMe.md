@@ -81,7 +81,8 @@ So, after evaluating the first expression we obtained the result of -5. This wil
 **NOTE :** 
 
 ```
-Input image size and output image size is different, the information on the borders of images are not preserved. To overcome these problems, we use padding.
+Input image size and output image size is different, the information on the borders of images are not preserved. 
+To overcome these problems, we use padding.
 ```
 if we not apply padding on the input image, then there will be 2 downside
 
@@ -132,6 +133,25 @@ OpenCV provides a function **`cv2.filter2D()`** to convolve a kernel with an ima
 
 The operation works like this: keep this kernel above a pixel, add all the 25 pixels below this kernel, take the average, and replace the central pixel with the new average value. 
 
+## **How to apply padding in image using OpenCV ?**
+
+We learned to use convolution to operate on images. One problem that naturally arises is how to handle the boundaries. 
+
+**`Important Question`**
+
+How can we convolve them if the evaluated points are at the edge of the image?
+
+For example, if you want to smooth an image using a **`Gaussian 3×3 filter`**, then, when processing the left-most pixels in each row, you need pixels to the left of them, that is, outside of the image. You can let these pixels be the same as the left-most image pixels ("replicated border" extrapolation method), or assume that all the non-existing pixels are zeros ("constant border" extrapolation method), and so on. OpenCV enables you to specify the extrapolation method. For details, see [BorderTypes](https://docs.opencv.org/master/d2/de8/group__core__array.html#ga209f2f4869e304c82d07739337eae7c5)
+
+What most of OpenCV functions do is to copy a given image onto another slightly larger image and then automatically pads the boundary. This way, the convolution can be performed over the needed pixels without problems (the extra padding is cut after the operation is done).
+
+In this tutorial, we will briefly explore two ways of defining the extra padding (border) for an image:
+
+- **`BORDER_CONSTANT`** : Pad the image with a constant value (i.e. black or 0)
+
+- **`BORDER_REPLICATE`** : The row or column at the very edge of the original is replicated to the extra border. 
+
+This will be seen more clearly in the Code section.
 ## **Averaging/Mean filter - Linear filter**
 
 In the picture below we can see that the input image on the left is processed with the averaging filter (box filter). Here, all the coefficient values have the same value of 1/9. After we have applied convolution operator, we have generated our output image on the right. It is good to know that as a filter size increases our image will become more blurred.
@@ -154,7 +174,7 @@ To perform averaging in OpenCV we use both **`cv2.blur()`** and **`cv2.boxFilter
 
 **Note**
 ```
-If you don't want to use a normalized box filter, use cv.boxFilter(). Pass an argument normalize=False to the function.
+If you don't want to use a normalized box filter, use cv2.boxFilter(). Pass an argument normalize=False to the function.
 ```
 
 **`Example 01`**
@@ -182,16 +202,16 @@ In the image below we can see a 2D Gaussian distribution. Now, when you look at 
 where **`x`** and **`y`** are the respective distances to the horizontal and vertical center of the kernel and **`sigma`** is the standard deviation of the Gaussian kernel.
 
 
-<p align="center"><img src="http://media5.datahacker.rs/2019/05/gaussian_2d-1-768x634.png" width="300px"></p>
+<p align="center"><img src="http://media5.datahacker.rs/2019/05/gaussian_2d-1-768x634.png" width="400px"></p>
 
 
-<p align="center"><img src="http://media5.datahacker.rs/2020/04/OIWce-768x576.png" width="300px"></p>
+<p align="center"><img src="http://media5.datahacker.rs/2020/04/OIWce-768x576.png" width="400px"></p>
 
 ```
 Effect of gaussian on varying sigma 
 ```
 
-<p align="center"><img src="https://i.ibb.co/HHLFQsf/gauss.jpg" alt="gauss" border="0" width="300px"></p>
+<p align="center"><img src="https://i.ibb.co/HHLFQsf/gauss.jpg" alt="gauss" border="0" width="500px"></p>
 
 Now, when we know what is a Gaussian distribution we can focus on our code. Here, we will use a function **`cv2.GaussianBlur()`**. Similarly to a averaging filter, we provide a tuple that represents our filter size. This is how our 3×3 filter looks like:
 
@@ -204,14 +224,14 @@ We should specify the **`width`** and **`height`** of the kernel which should be
 
 Gaussian blurring is highly effective in removing Gaussian noise from an image.
 
-If you want, you can create a Gaussian kernel with the function, [cv.getGaussianKernel()](https://docs.opencv.org/master/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa).
+If you want, you can create a Gaussian kernel with the function, [cv2.getGaussianKernel()](https://docs.opencv.org/master/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa).
 
 The above code can be modified for Gaussian blurring:
 
 ```py
-blur = cv.GaussianBlur(img,(5,5),0)
+blur = cv2.GaussianBlur(img,(5,5),0)
 ```
-<p align="center"><img src="http://media5.datahacker.rs/2019/05/Featured-Image-005-Averaging.png" width="300px"></p>
+<p align="center"><img src="http://media5.datahacker.rs/2019/05/Featured-Image-005-Averaging.png" width="500px"></p>
 
 <p align="center"><img src="http://media5.datahacker.rs/2020/05/download10-1024x341.png"></p>
 
@@ -228,22 +248,66 @@ Median filtering is a **`nonlinear operation`** often used in image processing t
 
 Here, the function **`cv2.medianBlur()`** takes the median of all the pixels under the kernel area and the central element is replaced with this median value. This is highly effective against salt-and-pepper noise in an image. Interestingly, in the above filters, the central element is a newly calculated value which may be a pixel value in the image or a new value. But in median blurring, the central element is always replaced by some pixel value in the image. It reduces the noise effectively. Its kernel size should be a positive odd integer.
 
-When applying a median blur, we first define our kernel size. Then, as in the averaging blurring method, we consider all pixels in the neighborhood of size K \times K where K is an odd integer.
+When applying a median blur, we first define our kernel size. Then, as in the averaging blurring method, we consider all pixels in the neighborhood of size **`K x K`** where K is an odd integer.
 
 <p align="center"><img src="https://i.ibb.co/Hn0f6YL/Median-filter.jpg" alt="Median-filter" border="0"></p>
 
 Notice how, unlike average blurring and Gaussian blurring where the kernel size could be rectangular, the kernel size for the median must be square. Furthermore (unlike the averaging method), instead of replacing the central pixel with the average of the neighborhood, we instead replace the central pixel with the median of the neighborhood.
 
+<p align="center"><img src="http://1.bp.blogspot.com/--O0Fm6ggZqY/VYsc_mBsqnI/AAAAAAAAA38/mNTJ2kJRSyU/s1600/content_08.png"></p>
+
 The reason median blurring is more effective at removing salt-and-pepper style noise from an image is that each central pixel is always replaced with a pixel intensity that exists in the image. And since the median is robust to outliers, the salt-and-pepper noise will be less influential to the median than another statistical method, such as the average.
 
 Again, methods such as averaging and Gaussian compute means or weighted means for the neighborhood — this average pixel intensity may or may not be present in the neighborhood. But by definition, the median pixel must exist in our neighborhood. By replacing our central pixel with a median rather than an average, we can substantially reduce noise.
 
+We use the function: [cv2.medianBlur (src, dst, ksize)](https://docs.opencv.org/3.4/dd/d6a/tutorial_js_filtering.html)
 
+**NOTE**
+
+The median filter uses [**`cv2.BORDER_REPLICATE`**](https://docs.opencv.org/3.4/d2/de8/group__core__array.html#gga209f2f4869e304c82d07739337eae7c5aa1de4cff95e3377d6d0cbe7569bd4e9f) internally to cope with border pixels.
+
+The median blur is by no means a **`“natural blur”`** like Gaussian smoothing. However, for damaged images or photos captured under highly suboptimal conditions, a median blur can really help as a pre-processing step prior to passing the image along to other methods, such as thresholding and edge detection
+
+## **Bilateral Filtering**
+
+[cv2.bilateralFilter()](https://docs.opencv.org/3.4/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed) is highly effective in noise removal while keeping edges sharp. But the operation is slower compared to other filters. We already saw that gaussian filter takes the a neighbourhood around the pixel and find its gaussian weighted average. This gaussian filter is a function of space alone, that is, nearby pixels are considered while filtering. It doesn't consider whether pixels have almost same intensity. It doesn't consider whether pixel is an edge pixel or not. So it blurs the edges also, which we don't want to do.
+
+<p align="center"><img src="https://i.ibb.co/0CszTRf/Screenshot-2751.png" alt="Screenshot-2751" border="0" width="400px"></p>
+
+Bilateral filter also takes a gaussian filter in space, but one more gaussian filter which is a function of pixel difference. Gaussian function of space make sure only nearby pixels are considered for blurring while gaussian function of intensity difference make sure only those pixels with similar intensity to central pixel is considered for blurring. So it preserves the edges since pixels at edges will have large intensity variation.
+
+We use the function: [**`cv2.bilateralFilter(src, dst, d, sigmaColor, sigmaSpace, borderType = cv.BORDER_DEFAULT)`**](https://docs.opencv.org/3.4/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed)
+
+**`Sigma values`**: For simplicity, you can set the 2 sigma values to be the same. If they are small (< 10), the filter will not have much effect, whereas if they are large (> 150), they will have a very strong effect, making the image look "cartoonish".
+
+**`Filter size`**: Large filters (d > 5) are very slow, so it is recommended to use d=5 for real-time applications, and perhaps d=9 for offline applications that need heavy noise filtering.
+
+**Bilateral filtering example**
+
+<p align="center"><img src="http://xidexia.github.io/Bilateral-Filtering/img/cat_compare.png" width="400px"></p>
+
+<p align="center"><img src="https://i.ibb.co/CPNDPzB/bilateral-filter.png" alt="bilateral-filter" border="0"></p>
+
+**`Figure 5 (c)`** shows the result of five iterations of bilateral filtering of the image in **`figure 5 (a)`**. While a single iteration produces a much cleaner image (**`figure 5 (b)`**) than the original, and is probably sufficient for most image processing needs, multiple iterations have the effect of flattening the colors in an image considerably, but without blurring edges. The resulting image has a much smaller color map, and the effects of bilateral filtering are easier to see when displayed on a printed page. Notice the cartoon-like appearance of **`figure 5 (c)`**. All shadows and edges are preserved, but most of the shading is gone, and no "new" colors are introduced by filtering.
 
 ## Reference 
 
 - [Smoothing in Digital Image Processing - Pallavi Agarwal](https://www.slideshare.net/hiiampallavi15/smoothing-in-digital-image-processing)
 
-- [](http://datahacker.rs/004-how-to-smooth-and-sharpen-an-image-in-opencv/)
+- [How to smooth and sharpen an image in opencv - Datahacker](http://datahacker.rs/004-how-to-smooth-and-sharpen-an-image-in-opencv/)
 
-- [](https://www.geeksforgeeks.org/cnn-introduction-to-padding/)
+
+- [C. Tomasi and R. Manduchi, "Bilateral Filtering for Gray and Color Images"](https://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/MANDUCHI1/Bilateral_Filtering.html)
+
+- [Filtering tutorial - OpenCV Officially Documentation](https://docs.opencv.org/master/d4/d13/tutorial_py_filtering.html)
+
+- [OpenCV smoothing and blurring - Pyimagesearch (Adrian Rosebrock)](https://www.pyimagesearch.com/2021/04/28/opencv-smoothing-and-blurring/)
+
+- [Mean Filter - homepages.inf.ed.ac.uk](https://homepages.inf.ed.ac.uk/rbf/HIPR2/mean.htm)
+
+
+- [Introduction to padding - geeksforgeeks](https://www.geeksforgeeks.org/cnn-introduction-to-padding/)
+
+- [Matlab Tutorial Digital Image Processing Filter_Smoothing - bogotobogo](https://www.bogotobogo.com/Matlab/Matlab_Tutorial_Digital_Image_Processing_6_Filter_Smoothing_Low_Pass_fspecial_filter2.php)
+
+- [Image Filtering - AI Stanford](https://ai.stanford.edu/~syyeung/cvweb/tutorial1.html)
