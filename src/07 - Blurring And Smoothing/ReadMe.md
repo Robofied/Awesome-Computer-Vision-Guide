@@ -137,9 +137,7 @@ The operation works like this: keep this kernel above a pixel, add all the 25 pi
 
 We learned to use convolution to operate on images. One problem that naturally arises is how to handle the boundaries. 
 
-**`Important Question`**
-
-How can we convolve them if the evaluated points are at the edge of the image?
+**`Important Question`** : How can we convolve them if the evaluated points are at the edge of the image?
 
 For example, if you want to smooth an image using a **`Gaussian 3×3 filter`**, then, when processing the left-most pixels in each row, you need pixels to the left of them, that is, outside of the image. You can let these pixels be the same as the left-most image pixels ("replicated border" extrapolation method), or assume that all the non-existing pixels are zeros ("constant border" extrapolation method), and so on. OpenCV enables you to specify the extrapolation method. For details, see [BorderTypes](https://docs.opencv.org/master/d2/de8/group__core__array.html#ga209f2f4869e304c82d07739337eae7c5)
 
@@ -260,7 +258,7 @@ The reason median blurring is more effective at removing salt-and-pepper style n
 
 Again, methods such as averaging and Gaussian compute means or weighted means for the neighborhood — this average pixel intensity may or may not be present in the neighborhood. But by definition, the median pixel must exist in our neighborhood. By replacing our central pixel with a median rather than an average, we can substantially reduce noise.
 
-We use the function: [cv2.medianBlur (src, dst, ksize)](https://docs.opencv.org/3.4/dd/d6a/tutorial_js_filtering.html)
+We use the function: [**`cv2.medianBlur (src, dst, ksize)`**](https://docs.opencv.org/3.4/dd/d6a/tutorial_js_filtering.html)
 
 **NOTE**
 
@@ -270,7 +268,7 @@ The median blur is by no means a **`“natural blur”`** like Gaussian smoothin
 
 ## **Bilateral Filtering**
 
-[cv2.bilateralFilter()](https://docs.opencv.org/3.4/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed) is highly effective in noise removal while keeping edges sharp. But the operation is slower compared to other filters. We already saw that gaussian filter takes the a neighbourhood around the pixel and find its gaussian weighted average. This gaussian filter is a function of space alone, that is, nearby pixels are considered while filtering. It doesn't consider whether pixels have almost same intensity. It doesn't consider whether pixel is an edge pixel or not. So it blurs the edges also, which we don't want to do.
+[**`cv2.bilateralFilter()`**](https://docs.opencv.org/3.4/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed) is highly effective in noise removal while keeping edges sharp. But the operation is slower compared to other filters. We already saw that gaussian filter takes the a neighbourhood around the pixel and find its gaussian weighted average. This gaussian filter is a function of space alone, that is, nearby pixels are considered while filtering. It doesn't consider whether pixels have almost same intensity. It doesn't consider whether pixel is an edge pixel or not. So it blurs the edges also, which we don't want to do.
 
 <p align="center"><img src="https://i.ibb.co/0CszTRf/Screenshot-2751.png" alt="Screenshot-2751" border="0" width="400px"></p>
 
