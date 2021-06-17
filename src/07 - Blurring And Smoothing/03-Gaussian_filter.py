@@ -68,6 +68,7 @@ while True:
     cv2.imshow('frame',image)
     cv2.imshow('Gaussian',filtered)
 
+    # Press the 'ESC' to exit
     k = cv2.waitKey(1) & 0xFF
     if k ==27:
         break 

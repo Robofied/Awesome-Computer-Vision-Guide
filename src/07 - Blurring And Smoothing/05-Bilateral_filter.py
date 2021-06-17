@@ -24,11 +24,17 @@ import cv2
 import numpy as np 
 import matplotlib.pyplot as plt
 
-image = cv2.imread('../Images and videos/carpet.jpg')
+'''
+Example 01 : Bilateral filter
+'''
+image = cv2.imread('../Images and videos/carpet_texture.jpg')
 
-bilateral_filter = cv2.bilateralFilter(image, d = 9,sigmaColor=75, sigmaSpace= 75, borderType=cv2.BORDER_CONSTANT)
+# To display image in the form of RGB in plt.show, we have to convert that into RGB format using cv2.cvtColor function
+RGB_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-images = [image,bilateral_filter]
+bilateral_filter = cv2.bilateralFilter(RGB_image, d = 9,sigmaColor=75, sigmaSpace= 75, borderType=cv2.BORDER_CONSTANT)
+
+images = [RGB_image, bilateral_filter]
 titles = ['Original', 'Bilateral Filtering']
 
 for i in range(0,2):
@@ -39,6 +45,33 @@ for i in range(0,2):
 
 plt.show()
 
+'''
+Example 02 : Applying 5 iteration of Bilateral filter
+'''
+image = cv2.imread('../Images and videos/taylor_swift.jpg')
+
+RGB_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+bilateral_filter_1 = cv2.bilateralFilter(RGB_image, d = 9,sigmaColor=75, sigmaSpace= 75, borderType=cv2.BORDER_CONSTANT)
+bilateral_filter_2 = cv2.bilateralFilter(bilateral_filter_1, d = 9,sigmaColor=75, sigmaSpace= 75, borderType=cv2.BORDER_CONSTANT)
+bilateral_filter_3 = cv2.bilateralFilter(bilateral_filter_2, d = 9,sigmaColor=75, sigmaSpace= 75, borderType=cv2.BORDER_CONSTANT)
+bilateral_filter_4 = cv2.bilateralFilter(bilateral_filter_3, d = 9,sigmaColor=75, sigmaSpace= 75, borderType=cv2.BORDER_CONSTANT)
+bilateral_filter_5 = cv2.bilateralFilter(bilateral_filter_4, d = 9,sigmaColor=75, sigmaSpace= 75, borderType=cv2.BORDER_CONSTANT)
+
+images = [RGB_image,bilateral_filter_5]
+titles = ['Original', '5 Iteration of Bilateral Filtering']
+
+for i in range(0,2):
+    plt.subplot(1,2,(i+1))
+    plt.imshow(images[i])
+    plt.title(titles[i])
+    plt.axis('off')
+
+plt.show()
+
+'''
+Example 03: Change the trackbar position to see the effect
+'''
 
 # Callback Function which helps to get the position of trackbar 
 def nothing(x):
@@ -46,16 +79,16 @@ def nothing(x):
 
 # 1.trackbar name  2.window name 3.minimum value 4.maximum value 5.callback function
 cv2.namedWindow('trackbars')
+cv2.resizeWindow('trackbars',700,150)
 cv2.createTrackbar('Diameter','trackbars',0,50,nothing)  
 cv2.createTrackbar('sigmaColor','trackbars',0,200,nothing) 
-cv2.createTrackbar('sigmaSpace','trackbars',1,200,nothing) 
+cv2.createTrackbar('sigmaSpace','trackbars',0,200,nothing) 
 
 
 while True: 
     
     # Read the image
-    image = cv2.imread('../Images and Videos/baby.jpg')
-    cv2.imshow('image',image)
+    image = cv2.imread('../Images and Videos/bird.jpg')
 
     # Get the trackbar position
     Diameter = cv2.getTrackbarPos('Diameter','trackbars')
@@ -74,3 +107,4 @@ while True:
 
 cv2.destroyAllWindows()
             
+

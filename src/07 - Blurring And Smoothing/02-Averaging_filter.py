@@ -74,7 +74,8 @@ def nothing(x):
     pass
 
 # 1.trackbar name  2.window name 3.minimum value 4.maximum value 5.callback function
-cv2.namedWindow('trackbars')
+cv2.namedWindow('trackbars',cv2.WINDOW_NORMAL)
+cv2.resizeWindow('trackbars',700,100)
 cv2.createTrackbar('ksize','trackbars',1,30,nothing) 
 
 

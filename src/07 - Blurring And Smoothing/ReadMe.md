@@ -250,7 +250,7 @@ When applying a median blur, we first define our kernel size. Then, as in the av
 
 <p align="center"><img src="https://i.ibb.co/Hn0f6YL/Median-filter.jpg" alt="Median-filter" border="0"></p>
 
-Notice how, unlike average blurring and Gaussian blurring where the kernel size could be rectangular, the kernel size for the median must be square. Furthermore (unlike the averaging method), instead of replacing the central pixel with the average of the neighborhood, we instead replace the central pixel with the median of the neighborhood.
+Notice how, unlike average blurring and Gaussian blurring where the kernel size could be rectangular ([Read in docs](https://docs.opencv.org/master/d4/d86/group__imgproc__filter.html#gaabe8c836e97159a9193fb0b11ac52cf1)), the kernel size for the median must be square. Furthermore (unlike the averaging method), instead of replacing the central pixel with the average of the neighborhood, we instead replace the central pixel with the median of the neighborhood.
 
 <p align="center"><img src="http://1.bp.blogspot.com/--O0Fm6ggZqY/VYsc_mBsqnI/AAAAAAAAA38/mNTJ2kJRSyU/s1600/content_08.png"></p>
 
@@ -270,7 +270,7 @@ The median blur is by no means a **`“natural blur”`** like Gaussian smoothin
 
 [**`cv2.bilateralFilter()`**](https://docs.opencv.org/3.4/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed) is highly effective in noise removal while keeping edges sharp. But the operation is slower compared to other filters. We already saw that gaussian filter takes the a neighbourhood around the pixel and find its gaussian weighted average. This gaussian filter is a function of space alone, that is, nearby pixels are considered while filtering. It doesn't consider whether pixels have almost same intensity. It doesn't consider whether pixel is an edge pixel or not. So it blurs the edges also, which we don't want to do.
 
-<p align="center"><img src="https://i.ibb.co/0CszTRf/Screenshot-2751.png" alt="Screenshot-2751" border="0" width="400px"></p>
+<p align="center"><img src="https://i.ibb.co/0CszTRf/Screenshot-2751.png" alt="Screenshot-2751" border="0" width="700px"></p>
 
 Bilateral filter also takes a gaussian filter in space, but one more gaussian filter which is a function of pixel difference. Gaussian function of space make sure only nearby pixels are considered for blurring while gaussian function of intensity difference make sure only those pixels with similar intensity to central pixel is considered for blurring. So it preserves the edges since pixels at edges will have large intensity variation.
 

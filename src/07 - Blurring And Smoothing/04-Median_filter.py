@@ -48,12 +48,12 @@ def nothing(x):
 # 1.trackbar name  2.window name 3.minimum value 4.maximum value 5.callback function
 cv2.namedWindow('trackbars')
 cv2.createTrackbar('ksize','trackbars',1,30,nothing) 
-
+cv2.resizeWindow('trackbars',700,50)
 
 while True: 
 
     # Read image
-    image = cv2.imread('../Images and videos/cat_2.jpg')
+    image = cv2.imread('../Images and videos/noisy_image.png')
 
     # Get trackbar position
     ksize = cv2.getTrackbarPos('ksize','trackbars')
@@ -64,8 +64,9 @@ while True:
     filtered = cv2.medianBlur(image, ksize=odd_ksize[ksize])
 
     cv2.imshow('Frame',image)
-    cv2.imshow('Gaussian',filtered)
+    cv2.imshow('Median_filter',filtered)
 
+    # Press the 'ESC' to exit
     k = cv2.waitKey(1) & 0xFF
     if k ==27:
         break 
