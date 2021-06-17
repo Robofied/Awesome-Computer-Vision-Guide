@@ -49,7 +49,7 @@ def nothing(x):
 cv2.namedWindow('trackbars')
 cv2.createTrackbar('sigmaX','trackbars',0,50,nothing)  
 cv2.createTrackbar('sigmaY','trackbars',0,50,nothing) 
-cv2.createTrackbar('ksize','trackbars',1,30,nothing) 
+cv2.createTrackbar('ksize','trackbars',0,30,nothing) 
 
 
 while True: 

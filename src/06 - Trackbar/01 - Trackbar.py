@@ -10,6 +10,8 @@ import numpy as np
 def nothing(x):
     pass
 
+# Use to resize the window which u are created : cv2.namedWindow('Window_name', cv2.WINDOW_NORMAL) 
+
 cv2.namedWindow('trackbars', cv2.WINDOW_AUTOSIZE)
 cv2.createTrackbar('x','trackbars',0,600,nothing)   # 1. trackbar name
 cv2.createTrackbar('y','trackbars',0,600,nothing)   # 2. window name

@@ -63,6 +63,8 @@ def main():
         masking_05()
     if selected_box == list_of_folder_name[6]:
         trackbar_06()
+    if selected_box == list_of_folder_name[7]:
+        blurring_07()
 
 
 def welcome(nums, name):
@@ -677,6 +679,71 @@ def trackbar_06():
 
     st.header("Example 2")    
     st.video('06 - Trackbar/Figure_2.mkv', format='video/mkv', start_time=0)
+
+
+def video_render(header, path, format):
+    """
+    Input : Header : Header name 
+            Path : Source image/video path
+    
+    Output : Render on streamlit app
+    """
+    st.subheader(header)    
+    st.video(path, format=format, start_time=0)
+
+def image_render(header, path):
+    """
+    Input : header : Designed header
+            Path : Source image/video path
+    
+    Output : Render on streamlit app
+    """
+    html_temp = f'<h3 style="font-weight:bold">{header}</h3>'
+    st.markdown(html_temp, unsafe_allow_html=True)
+    st.image(path, width=300)
+
+def image_render_column_width(header, path):
+    """
+    Input : Header : Header name 
+            Path : Source image/video path
+    
+    Output : Render on streamlit app
+    """
+    # html_temp = f'<h3 style="font-weight:bold">{header}</h3>'
+    # st.markdown(html_temp, unsafe_allow_html=True)
+    st.subheader(header)
+    st.image(path, use_column_width=True)
+
+def blurring_07():
+    html_temp = """
+    <div>
+        <h2 style="text-align:center;font-weight:bold">Image processing using OpenCV and Python</h2>
+    </div>
+    <br/><br/>
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
+
+    html_temp = """
+    <div style="background-color:#02203c;padding:10px">
+    <h2 style="color:white;text-align:center;font-weight:bold">Smoothing and Blurring Techniques in Image Processing</h2>
+    </div>
+    <br/><br/>
+    """
+    st.markdown(html_temp, unsafe_allow_html=True)
+
+    image_render_column_width('2D Convolution ( Image Filtering )','07 - Blurring And Smoothing/Figure_1.png')
+    image_render_column_width('Custom kernel operation','07 - Blurring And Smoothing/Figure_2.png')
+    image_render_column_width('Implementation of Gaussian filter using 2D Convolution','07 - Blurring And Smoothing/Figure_3.png')
+    image_render_column_width('Averaging/Mean filtering operation on different kernel size','07 - Blurring And Smoothing/Figure_4.png')
+    image_render_column_width('Boxfiltering filtering operation on different kernel size','07 - Blurring And Smoothing/Figure_5.png')
+    video_render('Applying Average/mean filtering on different kernel size', '07 - Blurring And Smoothing/Figure_6.mkv', 'video/mkv')
+    image_render_column_width('Gaussian filtering operation on different kernel size','07 - Blurring And Smoothing/Figure_7.png')
+    video_render('Applying Gaussian filtering on different kernel size, sigma X and Y', '07 - Blurring And Smoothing/Figure_8.mkv', 'video/mkv')
+    image_render_column_width('Median filtering operation on salt and pepper noise image','07 - Blurring And Smoothing/Figure_9.png')
+    video_render('Applying Median filtering on different kernel size', '07 - Blurring And Smoothing/Figure_10.mp4', 'video/mp4')
+    image_render_column_width('Bilateral filtering operation','07 - Blurring And Smoothing/Figure_11.png')
+    image_render_column_width('5 Iteration of Bilateral filtering','07 - Blurring And Smoothing/Figure_12.png')
+    video_render('Applying Bilateral filtering on different Diameter, Sigma Color and Sigma Space', '07 - Blurring And Smoothing/Figure_13.mkv', 'video/mkv')
 
 
 if __name__ == '__main__':
