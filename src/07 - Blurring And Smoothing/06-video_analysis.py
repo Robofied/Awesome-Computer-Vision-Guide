@@ -10,7 +10,7 @@ def nothing(x):   # callback function which is executed everytime trackbar value
 cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
 
 # trackbars
-cv2.namedWindow('trackbars')
+cv2.namedWindow('trackbars',cv2.WINDOW_NORMAL)
 cv2.createTrackbar('lowh','trackbars',0,180,nothing)  # 1.tracbar name
 cv2.createTrackbar('highh','trackbars',0,180,nothing) # 2 .window name
 cv2.createTrackbar('lows','trackbars',0,255,nothing)  # 3. default value
@@ -41,6 +41,8 @@ while True :
     '''    
     lowh,lows,lowv=48,0,0
     highh,highs,highv=125,255,255
+
+    0, 30, 0, 255, 49, 255
     '''
 
     # define range of red color in HSV
