@@ -109,7 +109,7 @@ gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
 # Binary - either 0 pixel or 255 pixel (black or white)
 (thresh,binary) = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
 
-# Convert 0 pixel to 0 and 255 pixel to 1
+# Convert '0' => 0 and '255' => 1
 binary = binary/255.0
 
 binary_copy0 = binary.copy()
@@ -145,7 +145,8 @@ titles = ['Original image', 'Erosion']
 for i in range(2):
     plt.subplot(1,2,(i+1))
     plt.imshow(images[i],'gray')
-    plt.xlabel(titles[i])
+    plt.title(titles[i])
+    plt.axis('off')
 
 plt.show()
 
@@ -155,7 +156,8 @@ titles = ['Original image', 'Dilation']
 for i in range(2):
     plt.subplot(1,2,(i+1))
     plt.imshow(images[i],'gray')
-    plt.xlabel(titles[i])
+    plt.title(titles[i])
+    plt.axis('off')
 
 plt.show()
 
@@ -165,7 +167,8 @@ titles = ['Original image', 'Opening']
 for i in range(2):
     plt.subplot(1,2,(i+1))
     plt.imshow(images[i],'gray')
-    plt.xlabel(titles[i])
+    plt.title(titles[i])
+    plt.axis('off')
 
 plt.show()
 
@@ -175,7 +178,8 @@ titles = ['Original image', 'Closing']
 for i in range(2):
     plt.subplot(1,2,(i+1))
     plt.imshow(images[i],'gray')
-    plt.xlabel(titles[i])
+    plt.title(titles[i])
+    plt.axis('off')
 
 plt.show()
 

@@ -123,6 +123,32 @@ Image blurring is achieved by convolving the image with a low-pass filter kernel
 
 OpenCV provides a large number of different types of blurring methods. So, let’s explore some of them.
 
+## **Linear filtering**
+
+The simplest filter is a point operator. Each pixel value is multiplied by a scalar value. This operation can be written as follows:
+
+<p align="center"><img src="https://hub.packtpub.com/wp-content/uploads/2018/04/image19.png"></p>
+
+Here:
+
+- The input image is F and the value of pixel at (i,j) is denoted as f(i,j)
+- The output image is G and the value of pixel at (i,j) is denoted as g(i,j)
+- K is scalar constant
+
+This type of operation on an image is what is known as a linear filter. In addition to multiplication by a scalar value, each pixel can also be increased or decreased by a constant value. So overall point operation can be written like this:
+
+<p align="center"><img src="https://hub.packtpub.com/wp-content/uploads/2018/04/image15.png"></p>
+
+This operation can be applied both to grayscale images and RGB images. For RGB images, each channel will be modified with this operation separately. The following is the result of varying both **`K`** and **`L`**. 
+
+- The first image is input on the left. 
+- In the second image, **`K=0.5`** and **`L=0.0`**, 
+- while in the third image, **`K`** is set to **`1.0`** and **`L`** is **`10`**. 
+- For the final image on the right, **`K=0.7`** and **`L=25`** . As you can see, varying K changes the brightness of the image and varying L changes the contrast of the image:
+
+<p align="center"><img src="https://hub.packtpub.com/wp-content/uploads/2018/04/image5-4.png"></p>
+
+
 ## **2D Convolution ( Image Filtering )**
 
 As in one-dimensional signals, images also can be filtered with various low-pass filters (LPF), high-pass filters (HPF), etc. LPF helps in removing noise, blurring images, etc. HPF filters help in finding edges in images.
@@ -309,3 +335,5 @@ We use the function: [**`cv2.bilateralFilter(src, dst, d, sigmaColor, sigmaSpace
 - [Matlab Tutorial Digital Image Processing Filter_Smoothing - bogotobogo](https://www.bogotobogo.com/Matlab/Matlab_Tutorial_Digital_Image_Processing_6_Filter_Smoothing_Low_Pass_fspecial_filter2.php)
 
 - [Image Filtering - AI Stanford](https://ai.stanford.edu/~syyeung/cvweb/tutorial1.html)
+
+- [image filtering techniques opencv - Hub Packtpub](https://hub.packtpub.com/image-filtering-techniques-opencv/)

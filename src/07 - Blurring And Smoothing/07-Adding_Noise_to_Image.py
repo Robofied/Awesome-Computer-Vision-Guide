@@ -13,21 +13,47 @@ Reference : https://theailearner.com/2019/05/07/add-different-noise-to-an-image/
 
 import cv2
 import numpy as np
- 
-img = cv2.imread('../Images and Videos/logo.png')
+import matplotlib.pyplot as plt
+import random
 
-# Draw random samples from a normal (Gaussian) distribution.
-# Generate Gaussian noise
-mu, sigma = 0,1 
-gauss = np.random.normal(mu,sigma,img.size)
+from numpy.core.fromnumeric import size
 
-gauss = gauss.reshape(img.shape[0],img.shape[1],img.shape[2]).astype('uint8')
+def gaussian_noise():
 
-# Add the Gaussian noise to the image
-img_gauss = cv2.add(img,gauss)
+    img = cv2.imread('../Images and Videos/logo.png')
 
-cv2.imshow('gaussian_noise', gauss)
+    # Draw random samples from a normal (Gaussian) distribution.
+    # Generate Gaussian noise
 
-# Display the image
-cv2.imshow('Noisy_image',img_gauss)
-cv2.waitKey(0)
+    mu, sigma = 0,1 
+    gauss = np.random.normal(mu,sigma,img.size)
+        
+    gauss = gauss.reshape(img.shape[0],img.shape[1],img.shape[2]).astype('uint8')
+
+    # Add the Gaussian noise to the image
+    img_gauss = cv2.add(img,gauss)
+
+    cv2.imshow('gaussian_noise', gauss)
+
+    # Display the image
+    cv2.imshow('Noisy_image',img_gauss)
+    res = np.hstack([gauss,img,img_gauss])
+    plt.imshow(res, cmap='gray')
+    plt.title('Adding Gaussian Noise')
+    plt.axis('off')
+    plt.show()
+    cv2.waitKey(0)
+
+def salt_and_pepper_noise():
+
+    img = cv2.imread('../Images and Videos/logo.png', 0)
+    img = img.astype(np.float)
+    img = img/255.0
+    for i in range(img.shape[1]):
+        for j in range(img.shape[0]):
+            img[i,j] = np.random.randint(0, 1, size=(img.shape[1], img.shape[0]))
+
+    cv2.imshow(img)
+    cv2.waitKey(0)
+
+salt_and_pepper_noise()

@@ -32,7 +32,8 @@ titles = ['Original', 'Erosion']
 for i in range(2):
     plt.subplot(1,2,(i+1))
     plt.imshow(images[i],'gray')
-    plt.xlabel(titles[i])
+    plt.title(titles[i])
+    plt.axis('off')
 
 plt.show()
 
@@ -45,7 +46,8 @@ titles = ['Original', 'dilation']
 for i in range(2):
     plt.subplot(1,2,(i+1))
     plt.imshow(images[i],'gray')
-    plt.xlabel(titles[i])
+    plt.title(titles[i])
+    plt.axis('off')
 
 plt.show()
 
@@ -53,12 +55,13 @@ plt.show()
 remove_small_objects = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
 
 images = [img, remove_small_objects]
-titles = ['Original', 'Small objects removal']
+titles = ['Original', 'Small objects removal (Opening)']
 
 for i in range(2):
     plt.subplot(1,2,(i+1))
     plt.imshow(images[i],'gray')
-    plt.xlabel(titles[i])
+    plt.title(titles[i])
+    plt.axis('off')
 
 plt.show()
 
@@ -66,11 +69,12 @@ plt.show()
 modify_objects = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
 
 images = [img, modify_objects]
-titles = ['Original', 'Filling small holes']
+titles = ['Original', 'Filling small holes (Closing)']
 
 for i in range(2):
-    plt.subplot(2,2,(i+1))
+    plt.subplot(1,2,(i+1))
     plt.imshow(images[i],'gray')
-    plt.xlabel(titles[i])
+    plt.title(titles[i])
+    plt.axis('off')
 
 plt.show()

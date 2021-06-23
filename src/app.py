@@ -731,6 +731,8 @@ def blurring_07():
     """
     st.markdown(html_temp, unsafe_allow_html=True)
 
+    image_render_column_width('Linear image filtering','07 - Blurring And Smoothing/Figure_14.png')
+    video_render('Applying Linear image filtering on different values of K & L', '07 - Blurring And Smoothing/Figure_15.mkv', 'video/mkv')
     image_render_column_width('2D Convolution ( Image Filtering )','07 - Blurring And Smoothing/Figure_1.png')
     image_render_column_width('Custom kernel operation','07 - Blurring And Smoothing/Figure_2.png')
     image_render_column_width('Implementation of Gaussian filter using 2D Convolution','07 - Blurring And Smoothing/Figure_3.png')
@@ -744,7 +746,7 @@ def blurring_07():
     image_render_column_width('Bilateral filtering operation','07 - Blurring And Smoothing/Figure_11.png')
     image_render_column_width('5 Iteration of Bilateral filtering','07 - Blurring And Smoothing/Figure_12.png')
     video_render('Applying Bilateral filtering on different Diameter, Sigma Color and Sigma Space', '07 - Blurring And Smoothing/Figure_13.mkv', 'video/mkv')
-
+    image_render_column_width('Add noise to an image','07 - Blurring And Smoothing/Figure_16.png')
 
 if __name__ == '__main__':
     main()
