@@ -746,7 +746,10 @@ def blurring_07():
     image_render_column_width('Bilateral filtering operation','07 - Blurring And Smoothing/Figure_11.png')
     image_render_column_width('5 Iteration of Bilateral filtering','07 - Blurring And Smoothing/Figure_12.png')
     video_render('Applying Bilateral filtering on different Diameter, Sigma Color and Sigma Space', '07 - Blurring And Smoothing/Figure_13.mkv', 'video/mkv')
-    image_render_column_width('Add noise to an image','07 - Blurring And Smoothing/Figure_16.png')
+    image_render_column_width('Add Gaussian noise to an image','07 - Blurring And Smoothing/Figure_16.png')
+    image_render_column_width('Add Salt and Pepper noise to an image','07 - Blurring And Smoothing/Figure_17.png')
+    image_render_column_width('Add Poission noise to an image','07 - Blurring And Smoothing/Figure_18.png')
+    image_render_column_width('Add Speckle noise to an image','07 - Blurring And Smoothing/Figure_19.png')
 
 if __name__ == '__main__':
     main()
