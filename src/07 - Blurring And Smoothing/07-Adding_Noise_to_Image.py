@@ -16,6 +16,8 @@ Reference : https://theailearner.com/2019/05/07/add-different-noise-to-an-image/
 
 # import package
 
+from operator import pos
+import posixpath
 import cv2
 import random
 from numpy.lib.type_check import imag
@@ -23,6 +25,7 @@ import skimage
 from skimage import io
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 
 def gaussian_noise():
@@ -51,6 +54,7 @@ def gaussian_noise():
     plt.show()
     cv2.waitKey(0)
 
+
 def salt_and_pepper_noise(prob):
 
     # Read image
@@ -78,17 +82,33 @@ def salt_and_pepper_noise(prob):
     plt.show()
 
 
-
 def poission_noise():
 
     # Read image
     img = cv2.imread('../Images and Videos/logo.png')
+
+    # Copy of the image
     image = img.copy()
-    vals = len(np.unique(image))
-    vals = 2 ** np.ceil(np.log2(vals))
-    poisson_noisy_image = np.random.poisson(image * vals) / float(vals)
+
+    info = np.iinfo(image.dtype)
+    print(image.dtype, info)
+
+    image = image.astype(np.float64) / info.max
+
+    # Poission noise using skimage library
+    poisson_noisy_image = skimage.util.random_noise(image, mode="poisson")
+
+    poisson_noisy_image = 255 * poisson_noisy_image 
+    poisson_noisy_image = poisson_noisy_image.astype(np.uint8)
 
     res = np.hstack([img,poisson_noisy_image])
+
+    df = [img.ravel(), poisson_noisy_image.ravel()]    
+    for i in range(2):
+        plt.subplot(1,2,(i+1))
+        plt.hist(df[i])
+    plt.show()
+
     plt.imshow(res)
     plt.title('Adding Poisson Noise')
     plt.axis('off')
@@ -112,53 +132,4 @@ if __name__=='__main__':
     salt_and_pepper_noise(prob = 0.05)
     poission_noise()
     speckle()
-# def plotnoise(img, mode, r, c, i):
-#     plt.subplot(r,c,i)
-#     if mode is not None:
-#         gimg = skimage.util.random_noise(img, mode=mode)
-#         plt.imshow(gimg)
-#     else:
-#         plt.imshow(img)
-#     plt.title(mode)
-#     plt.axis("off")
 
-# def adding_noise_using_skimage_library():
-
-#     img_path="https://i.guim.co.uk/img/media/4ddba561156645952502f7241bd1a64abd0e48a3/0_1251_3712_2225/master/3712.jpg?width=1920&quality=85&auto=format&fit=max&s=1280341b186f8352416517fc997cd7da"
-#     img = io.imread(img_path)/255.0
-
-#     row, col = 4,2
-#     noise_type = ["gaussian","localvar", "poisson", "salt", "pepper", "s&p", "speckle"]
-#     for i in range(1, len(noise_type)+1):    
-#         plotnoise(img, noise_type[i-1], row,col, i)
-#     plt.show()
-
-# adding_noise_using_skimage_library()
-
-# img_path="https://i.guim.co.uk/img/media/4ddba561156645952502f7241bd1a64abd0e48a3/0_1251_3712_2225/master/3712.jpg?width=1920&quality=85&auto=format&fit=max&s=1280341b186f8352416517fc997cd7da"
-# img = skimage.io.imread(img_path)/255.0
-# gimg = skimage.util.random_noise(img, mode="s&p")
-# plt.imshow(gimg)
-# plt.show()
-# def plotnoise(img, mode, r, c, i):
-#     plt.subplot(r,c,i)
-#     if mode is not None:
-#         gimg = skimage.util.random_noise(img, mode=mode)
-#         plt.imshow(gimg)
-#     else:
-#         plt.imshow(img)
-#     plt.title(mode)
-#     plt.axis("off")
-
-# plt.figure(figsize=(18,24))
-# r=4
-# c=2
-# plotnoise(img, "gaussian", r,c,1)
-# plotnoise(img, "localvar", r,c,2)
-# plotnoise(img, "poisson", r,c,3)
-# plotnoise(img, "salt", r,c,4)
-# plotnoise(img, "pepper", r,c,5)
-# plotnoise(img, "s&p", r,c,6)
-# plotnoise(img, "speckle", r,c,7)
-# plotnoise(img, None, r,c,8)
-# plt.show()
