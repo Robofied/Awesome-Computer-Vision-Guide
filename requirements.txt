@@ -3,7 +3,7 @@ matplotlib==3.3.4
 scipy==1.6.0
 Pillow==9.3.0
 scikit-image==0.18.1
-numpy==1.20.0
+numpy==1.22.0
 pandas==1.2.1
 imutils==0.5.4
 skia-python==87.1
